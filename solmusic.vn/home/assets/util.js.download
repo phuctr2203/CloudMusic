@@ -1,0 +1,95 @@
+/* global BootstrapDialog */
+
+$(function() {
+    
+    buildUrl = function (url, params) {
+        var queries = '';
+
+        if (params.length > 0) {
+            queries += '?';
+            $.each(params, function (index, data) {
+                queries += data.key + '=' + data.value;
+                if (index < (params.length - 1)) {
+                    queries += '&';
+                }
+            });
+        }
+
+        return url + queries;
+    };
+    
+    alertModel = function(msg, type, callback) {
+        BootstrapDialog.alert({
+            title: 'Thông báo',
+            message: msg,
+            buttonLabel: 'Đóng',
+            closable: false,
+            type: type,
+            callback: callback
+        });
+    };
+
+    msgModel = function(msg, type, title, isOpen, callback) {
+        var open = isOpen();
+        if (open) {
+            BootstrapDialog.alert({
+                title: title,
+                message: msg,
+                buttonLabel: 'Đóng',
+                closable: false,
+                type: type,
+                callback: callback
+            });
+        }
+    };
+
+    confirmModel = function(msg, callback) {
+        return new BootstrapDialog({
+            title: 'Xác nhận',
+            message: msg,
+            closable: false,
+            data: {
+                'callback': callback
+            },
+            buttons: [{
+                    label: 'Hủy',
+                    action: function(dialog) {
+                        typeof dialog.getData('callback') === 'function' && dialog.getData('callback')(false);
+                        dialog.close();
+                    }
+                }, {
+                    label: 'Đồng ý',
+                    cssClass: 'btn-primary',
+                    action: function(dialog) {
+                        typeof dialog.getData('callback') === 'function' && dialog.getData('callback')(true);
+                        dialog.close();
+                    }
+                }]
+        }).open();
+    };
+    
+    keySubmit = function(fieldElm, btnElm) {
+        fieldElm.keypress(function(e) {
+            if (e.keyCode === 10 || e.keyCode === 13) {
+                e.preventDefault();
+                btnElm.trigger('click');
+            }
+        });
+    };
+
+    $('.sidebar-toggle').on('click', function(e) {
+        var state = '';
+
+        if (!$('body').hasClass('sidebar-collapse')) {
+            state = 'sidebar-collapse';
+        }
+
+        $.ajax({
+            type: 'post',
+            url: '/common/sidebar',
+            data: {
+                state: state
+            }
+        });
+    });
+});

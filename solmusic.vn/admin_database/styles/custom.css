@@ -1,0 +1,2233 @@
+/*YOUR CUSTOM STYLE STARTED IN HERE*/
+@font-face {
+    font-family: montserrat-light;
+    src: url("../fonts/montserrat/Montserrat-Light.otf");
+}
+@font-face {
+
+    font-family: montserrat-regular;
+    src: url("../fonts/montserrat/Montserrat-Regular.otf");
+    font-weight: 600;
+}
+@font-face {
+    font-family: montserrat-bold;
+    src: url("../fonts/montserrat/Montserrat-Bold.otf");
+    font-weight: 700;
+}
+.red-color{color: red;}
+.blue-color{color: #558B2F;}
+.table > tbody > tr > td {
+    border-top:0 solid #e4e5e7!important;
+}
+label {font-weight:normal!important;}
+input  { vertical-align:baseline;}
+.list-group-dual {
+    border: 1px solid #ddd;
+}
+.list-arrows {
+    left: -4px;
+    padding-top: 100px;
+    position: absolute;
+}
+.list-group-dual .list-group-item {
+    border-color: currentcolor currentcolor #ddd;
+    border-style: none none solid;
+    border-width: medium medium 1px;
+    clear: both;
+    height: 40px;
+    margin-bottom: 0;
+    padding: 5px;
+}
+.list-group-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    display: block;
+    margin-bottom: -1px;
+    padding: 5px 15px;
+    position: relative;
+}
+.list-group-dual .list-group-item .count {
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.album_result .title {
+    width: 350px!important;
+}
+
+.list-group-dual .list-group-item .title {
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 420px!important;
+}
+
+.list-group-dual .list-group-item .add {
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 14px;
+}
+.list-group-dual .list-group-item .remove {
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 14px;
+}
+.player-control {
+    clear: both;
+}
+.w-1{width: 3%;}
+#tb_song_filter,#tb_order_filter,#tb_payment_filter{display: none;}
+
+/*====sugest===*/
+
+#divSuggestion, #top20_box_more, .box_info_show {
+    display: block;
+    opacity: 1;
+    transition: opacity 0.2s linear 0s, visibility 0.2s linear 0s;
+    visibility: visible;
+}
+.suggestion {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: #ffffff none repeat scroll 0 0;
+    border-color: currentcolor #cfcfcf #cfcfcf;
+    border-image: none;
+    border-style: none solid solid;
+    border-width: 0 1px 1px;
+    margin: 0px;
+    position: absolute;
+    width: 442px;
+    z-index: 10000;
+}
+.suggestion {
+    opacity: 1;
+    visibility: visible;
+}
+.suggestion .content_search {
+    float: left;
+    width: 446px;
+    padding:0px;
+    margin:0px;
+}
+.suggestion .content_search li {
+    float: left;
+    width: 442px;
+}
+.suggestion .content_search li ul li a {
+    color: #333333;
+    display: block;
+    float: left;
+    font-size: 13px;
+    padding: 7px 5px 7px 10px;
+    vertical-align: middle;
+    width: 446px;
+}
+.top-number-1 {
+    background: #e74c3c none repeat scroll 0 0;
+}
+.top-number {
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    height: 25px;
+    line-height: 25px;
+    margin-right: 6px;
+    text-align: center;
+    width: 25px;
+}
+.top-number-2 {
+    background: #1abc9c none repeat scroll 0 0;
+}
+.top-number-3 {
+    background: #f39c4d none repeat scroll 0 0;
+}
+.top-number-4 {
+    background: #2980b9 none repeat scroll 0 0;
+}
+.top-number-5 {
+    background: #48647c none repeat scroll 0 0;
+}
+
+.suggestion .content_search li h3.title_row {
+    background: #e9eced none repeat scroll 0 0;
+    border-bottom: 0 solid #e4e4e4;
+    border-top: 0 solid #e4e4e4;
+    color: #333333;
+    float: left;
+    font-size: 14px;
+    height: 18px;
+    line-height: 18px;
+    padding: 5px 5px 5px 10px;
+    width: 440px;
+    margin-bottom:0;
+    margin-top:0;
+}
+
+.suggestion .content_search li h3.title_row {
+    box-sizing: border-box;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 0 0 10px;
+}
+.suggestion .content_search li ul li a.tkw {
+    box-sizing: border-box;
+    height: 42px;
+    line-height: 42px;
+    padding: 0 0 0 10px;
+}
+.suggestion .content_search li ul li a {
+    color: #333333;
+    display: block;
+    float: left;
+    font-size: 13px;
+    padding: 7px 5px 7px 10px;
+    vertical-align: middle;
+    width: 442px;
+}
+.suggestion .content_search li ul li a:hover {
+    background-color: silver;
+}
+
+ol, ul {
+    margin-bottom: 10px;
+    margin-top: 0;
+    padding: 0;
+}
+li {
+    list-style: outside none none;
+}
+
+.form-group span,.form-group .col-sm-1 span{
+    padding-top:5px!important;
+}
+
+.list-group-dual .list-group-item .added {
+    color: #ddd;
+    /*cursor: default;*/
+}
+.modal-header{padding: 5px;}
+.modal-header .modal-title {font-size:20px;text-align: left;}
+/*    custom dashboard*/
+.area-top-box-1 {
+    border: 1px solid #ddd;
+    margin: 10px 0 5px 10px;
+    border-radius: 4px;
+    height: 65px;
+    padding: 17px;
+    position: relative;
+}
+.area-top-box-2 {
+    border: 1px dashed #ddd;
+    margin: 10px 0 5px 10px;
+    border-radius: 4px;
+    height: 65px;
+    padding: 17px;
+    position: relative;
+}
+.area-top-box-3 {
+    padding: 10px;
+    position: relative;
+    bottom: -18px;
+}
+.area-top-box-1 a {
+    color: #000 !important;
+}
+.area-top-box-2 a {
+    color: #000 !important;
+}
+
+.font-fa-gray {
+    font-size: 30px;
+    color: #C1CDCD;
+}
+.font-fa {
+    font-size: 30px;
+    color: #389af0;
+}
+.i-fa {
+    padding-right: 10px;
+}
+.middle-text {
+    float: left;
+    margin-top: -26px;
+    margin-left: 40px;
+    position: absolute;
+}
+.total-area{
+    margin-bottom: 10px;
+}
+/*css validator*/
+.has-error .form-control {
+    border-color: #a94442;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+.has-success .form-control {
+    border-color: #3c763d;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+.has-success .form-control-feedback {
+    color: #3c763d;
+    padding-right: 10px !important;
+}
+.form-horizontal .has-feedback .form-control-feedback {
+    top: 0;
+    right: 15px;
+}
+
+.has-error .form-control-feedback {
+    color: #a94442;
+    padding-right: 10px !important;
+}
+.navbar-header {
+    background-color: #fff !important;
+}
+.navbar-brand>img {
+    height: auto !important;
+}
+.navbar-brand {
+    color: #fff;
+}
+.btn-info {
+    background-color: #428bca;
+    border-color: #51b3d1;
+}
+.btn-info:focus, .btn-info:hover {
+    background-color: #428bca;
+    border-color: #51b3d1;
+}
+.sidebar {
+    background-color: #fff !important;
+}
+.sidebar .nav-heading {
+    color: #000;
+}
+.sidebar ul li a {
+    color: #333;
+}
+
+.nav>li>a:hover {
+    background-color: rgba(0,0,0,0.24);
+    border-color: transparent;
+}
+.sidebar ul li.active, .sidebar ul li.active:hover {
+    border-color: #f91942;
+}
+/*custom form add admin*/
+.well {
+    height: auto;
+
+}
+.control-label{
+    text-align:center;
+}
+.form-check-label{
+    padding-right:20px;
+}
+.form-check{
+    padding-top:10px;
+}
+#field{
+    padding-bottom:10px;
+}
+.text-right{
+    text-align:right !important;
+}
+.text-left{
+    text-align:left !important;
+}
+.form-group-bottom{
+    padding-bottom:34px;
+}
+.border-input{
+    /*border:1px solid red;*/
+}
+.color-text{
+    color:#558B2F;
+    font-weight: 600 !important;
+}
+.search-detail{
+    border-radius:20px;
+    padding-left: 30px;
+
+}
+.btn-search{
+    background: transparent;
+    border: none;
+    position: absolute;
+    top: 6px;
+    padding-left: 12px;
+}
+.checked-box{
+    position: absolute;
+    top: 40%;
+    right: 15px;
+}
+#btn-search{
+    width: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#btn-save{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#btn-out{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+.form-check-input{
+    margin-right: 15px !important;
+}
+.bootstrap-dialog-body{
+    text-align: center;
+}
+.start-red{color:#a94442; margin-left:10px;margin-top:5px;vertical-align: sub;}
+.missdata{color:red;position: relative;}
+.text-left{text-align: left!important;display: flex;}
+.text-right{text-align: right!important;display: flex;}
+
+
+/*style permission*/
+
+.checkedbox-style{
+    color: blue !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+}
+.tbl-permission > tbody > tr > td:nth-child(1){
+    width: 3% !important;
+}
+.tbl-permission > tbody > tr > td:nth-child(2){
+    width: 15% !important;
+}
+.checkbox-permission{
+    cursor: pointer;
+}
+.check-all-permission{
+    cursor: pointer;
+}
+@media only screen and (min-width: 768px) and (max-width: 990px) {
+    .tbl-permission > tbody > tr > td:nth-child(2){
+        width: 35% !important;
+    }
+    .permission-info{
+        width:200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+} 
+@media only screen and (min-width: 400px) and (max-width: 767px) {
+    .tbl-permission > tbody > tr > td:nth-child(2){
+        width: 30% !important;
+        white-space: normal;
+    }
+    
+} 
+.border{
+        border-radius: 5px;
+}
+/*Trang dashboard mới*/
+.content-page{
+    width: 100%;
+    float: left;
+    height: auto;
+    background: url(../images/background-dashboard.jpg);
+    background-size: 100%;
+    background-repeat: repeat-y;
+}
+
+.lst-content-page{
+    position: absolute;
+    top:0px;
+}
+.image{
+    margin-bottom: 10px;
+    float: left;
+}
+.image img{
+    width: 100%;
+    max-width: 358px;
+}
+
+.grid-left-1{
+    float: left;
+    width: 44%;
+    margin-top: 40px;
+    left: 40px;
+    position: absolute;
+}
+.grid-left-2{
+    float: left;
+    width: 44%;
+    position: absolute;
+    margin-top: -20px;
+    left: 285px;
+}
+.clear-padding{
+    padding: 0px;
+}
+.logo{
+    margin: auto;
+    margin-top: 70px;
+}
+.song-name{
+    margin: auto;
+    margin-top: 80px;
+}
+.song-name img{
+    width: 100%;
+}
+.logo img{
+    
+}
+.album-1{
+    margin-top: 45px;
+    float: left;
+    width: 100%;
+    height: auto;
+}
+.image-album{
+    float: left;
+
+}
+.image-album img{
+    width: 100%;
+}
+.content-album{
+    float: left;
+    margin-left: 40px;
+}
+.content-album .number{
+    background: -webkit-linear-gradient(#02abed 47%, #2c6eb7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    font-size: 120px;
+    line-height: 95px;
+    font-family: montserrat-bold;
+    width: 100%;
+}
+.content-album .content{
+    color: #fff;
+    font-size: 34px;
+    font-family: montserrat-bold;
+    padding-top: 30px;
+    width: 100%;
+}
+.content-album .singer{
+    color: #fff;
+    font-size: 24px;
+    font-family: montserrat-light;
+    padding-top: 5px;
+    width: 100%;
+}
+.lst-album-song{
+    margin-top: 60px;
+    margin-bottom: 44px;
+}
+.lst-album-song .image-album{
+    padding-left: 15px;
+    width: 182px;
+    height: 145px;
+}
+.lst-album-song .content-album-lst{
+    float: left;
+    margin-left: 15px;
+}
+.lst-album-song .content-album-lst .number-lst{
+    background: -webkit-linear-gradient(#02abed 47%, #2c6eb7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 40px;
+    font-family: montserrat-bold;
+    width: 100%;
+}
+.lst-album-song .content-album-lst .content-lst{
+    color: #fff;
+    font-size: 24px;
+    font-family: montserrat-bold;
+    margin-top: 15px;
+    overflow: hidden;
+    max-height: 60px;
+    line-height: normal;
+    max-width: 200px;
+
+}
+.lst-album-song .content-album-lst .singer-lst{
+    color: #fff;
+    font-size: 18px;
+    font-family: montserrat-light;
+    padding-top: 10px;
+    width: 100%;
+    overflow: hidden;
+    max-height: 33px;
+    max-width: 200px;
+}
+.lst-album-song .margin-top-index{
+    margin-top: 60px;
+}
+.info-grid{
+    position: absolute;
+    top: 25%;
+    left: 17%;
+}
+.info-grid .number-grid{
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 75px;
+    font-family: montserrat-bold;
+    width: 220px;
+    text-align: center;
+}
+.info-grid .des-grid{
+    font-size: 17px;
+    font-family: montserrat-bold;
+    padding-top: 0px;
+    text-align: center;
+    max-width: 180px;
+    margin: 0 auto;
+}
+.number-grid-blue{
+    background: -webkit-linear-gradient(#02abed 40%, #2c6eb7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.number-grid-white{
+    color:#fff;
+}
+.info-grid .des-grid-blue{
+    color:#3265af;
+}
+.info-grid .des-grid-white{
+    color:#fff;
+}
+.hexagon {
+    overflow: hidden;
+    visibility: hidden;
+    -webkit-transform: rotate(120deg);
+       -moz-transform: rotate(120deg);
+        -ms-transform: rotate(120deg);
+         -o-transform: rotate(120deg);
+            transform: rotate(120deg);
+    cursor: pointer;
+    }
+.hexagon-in1 {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: rotate(-60deg);
+       -moz-transform: rotate(-60deg);
+        -ms-transform: rotate(-60deg);
+         -o-transform: rotate(-60deg);
+            transform: rotate(-60deg);
+    }
+.hexagon-in2 {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 100%;
+    visibility: visible;
+    -webkit-transform: rotate(-60deg);
+       -moz-transform: rotate(-60deg);
+        -ms-transform: rotate(-60deg);
+         -o-transform: rotate(-60deg);
+            transform: rotate(-60deg);
+    }
+
+.hexagon1 {
+    width: 400px;
+    height: 200px;
+    margin: 0 0 0 0px;
+    }
+.hexa-album-1{
+    width: 230px !important;
+    margin-left: 0px;
+}
+.hexa-album{
+    width: 167px !important;
+    height: 144px !important;
+    margin-left: 0px;
+}
+.hexagon2 {
+    width: 200px;
+    height: 400px;
+    margin: -80px 0 0 20px;
+    }
+.dodecagon {
+    width: 200px;
+    height: 200px;
+    margin: -80px 0 0 20px;
+    }
+    
+/*Responsive dashboard new*/
+@media only screen and (min-width: 1900px) and (max-width: 1950px) {
+    .grid-left-1{
+        margin-top: 55px;
+        left: 6%;
+        width: 42%;
+    }
+    .grid-left-2{
+        float: left;
+        width: 42%;
+        position: absolute;
+        margin-top: 0px;
+        left: 36%;
+    }
+}
+@media only screen and (min-width: 1800px) and (max-width: 1900px) {
+    .content-page{
+        width: 100%;
+        float: left;
+        height: auto;
+        background: url(../images/background-dashboard.jpg);
+        background-size: 100%;
+        background-repeat: repeat-y;
+        padding-bottom: 20px;
+    }
+    .grid-left-1{
+        margin-top: 50px;
+        left: 9.3%;
+        width: 38%;
+    }
+    .grid-left-2{
+        float: left;
+        width: 38%;
+        position: absolute;
+        margin-top: 0px;
+        left: 36%;
+    }
+    .info-grid .number-grid {
+        font-size: 50px;
+        line-height: 50px;
+        margin-left: 0%;
+        width: 190px;
+    }
+    .info-grid .des-grid {
+        font-size: 17px;
+        width: 100%;
+        max-width: 190px;
+        overflow: hidden;
+        margin-left: 0%;
+    }
+    
+    .logo {
+        margin-top: 5%;
+    }
+    .song-name {
+        margin-top: 3%;
+    }
+    .top-grid-2{
+        top: 0%;
+    }
+    .album-1 {
+        margin-top: 25px;
+    }
+    .image-album {
+        width: 30%;
+    }
+    .content-album{
+        width: 60%;
+    }
+    .hexa-album-1 {
+        width: 280px !important;
+        height: 140px;
+        margin-left: -35px;
+    }
+    .content-album .number {
+        font-size: 70px;
+        line-height: 50px;
+    }
+    .content-album .content {
+        font-size: 28px;
+        padding-top: 5px;
+        line-height: normal;
+    }
+    .content-album .singer {
+        font-size: 18px;
+        padding-top: 5px;
+    }
+    .lst-album-song {
+        margin-top: 30px;
+    }
+    .hexa-album {
+        width: 220px !important;
+        height: 110px !important;
+        margin-left: -55px;
+    }
+    .lst-album-song .image-album {
+        padding-left: 15px;
+        width: 135px;
+        height: 120px;
+    }
+    .lst-album-song .content-album-lst {
+        width: 48%;
+        float: left;
+    }
+    .lst-album-song .content-album-lst .number-lst {
+        font-size: 45px;
+        line-height: 35px;
+    }
+    .lst-album-song .content-album-lst .content-lst {
+        font-size: 18px;
+        margin-top: 10px;
+        max-height: 45px !important;
+    }
+    .lst-album-song .content-album-lst .singer-lst {
+        font-size: 14px;
+        padding-top: 5px;
+        max-height: 25px !important;
+        max-width: 200px;
+    }
+    .lst-album-song .margin-top-index {
+        margin-top: 25px;
+    }
+}
+@media only screen and (min-width: 1700px) and (max-width: 1800px) {
+    .content-page{
+        width: 100%;
+        float: left;
+        height: auto;
+        background: url(../images/background-dashboard.jpg);
+        background-size: 100%;
+        background-repeat: repeat-y;
+        padding-bottom: 55px;
+    }
+    .grid-left-1{
+        margin-top: 50px;
+        left: 8%;
+        width: 40%;
+    }
+    .grid-left-2{
+        float: left;
+        width: 40%;
+        position: absolute;
+        margin-top: 0px;
+        left: 36%;
+    }
+    .info-grid .number-grid {
+        font-size: 50px;
+        line-height: 50px;
+  
+        margin-left: 0%;
+        width: 190px;
+    }
+    .info-grid .des-grid {
+        font-size: 17px;
+        width: 100%;
+        max-width: 190px;
+        overflow: hidden;
+        margin-left: 0%;
+    }
+    
+    .logo {
+        margin-top: 5%;
+    }
+    .song-name {
+        margin-top: 3%;
+    }
+    .top-grid-2{
+        top: 0%;
+    }
+    .album-1 {
+        margin-top: 25px;
+    }
+    .image-album {
+        width: 30%;
+    }
+    .content-album{
+        width: 60%;
+    }
+    .hexa-album-1 {
+        width: 280px !important;
+        height: 140px;
+        margin-left: -35px;
+    }
+    .content-album .number {
+        font-size: 70px;
+        line-height: 50px;
+    }
+    .content-album .content {
+        font-size: 28px;
+        padding-top: 5px;
+        line-height: normal;
+    }
+    .content-album .singer {
+        font-size: 18px;
+        padding-top: 5px;
+    }
+    .lst-album-song {
+        margin-top: 30px;
+    }
+    .hexa-album {
+        width: 220px !important;
+        height: 110px !important;
+        margin-left: -55px;
+    }
+    .lst-album-song .image-album {
+        padding-left: 15px;
+        width: 135px;
+        height: 120px;
+    }
+    .lst-album-song .content-album-lst {
+        width: 48%;
+        float: left;
+    }
+    .lst-album-song .content-album-lst .number-lst {
+        font-size: 45px;
+        line-height: 35px;
+    }
+    .lst-album-song .content-album-lst .content-lst {
+        font-size: 18px;
+        margin-top: 10px;
+        max-height: 45px !important;
+    }
+    .lst-album-song .content-album-lst .singer-lst {
+        font-size: 14px;
+        padding-top: 5px;
+        max-height: 25px !important;
+        max-width: 200px;
+    }
+    .lst-album-song .margin-top-index {
+        margin-top: 25px;
+    }
+}
+@media only screen and (min-width: 1600px) and (max-width: 1700px) {
+    .content-page{
+        width: 100%;
+        float: left;
+        height: auto;
+        background: url(../images/background-dashboard.jpg);
+        background-size: 100%;
+        background-repeat: repeat-y;
+        padding-bottom: 55px;
+    }
+    .grid-left-1{
+        margin-top: 50px;
+        left: 1%;
+        width: 42%;
+    }
+    .grid-left-2{
+        float: left;
+        width: 42%;
+        position: absolute;
+        margin-top: 0px;
+        left: 30.5%;
+    }
+    .info-grid .number-grid {
+        font-size: 50px;
+        line-height: 50px;
+  
+        margin-left: 0%;
+        width: 190px;
+    }
+    .info-grid .des-grid {
+        font-size: 14px;
+        width: 100%;
+        max-width: 190px;
+        overflow: hidden;
+        margin-left: 0%;
+    }
+    
+    .logo {
+        margin-top: 5%;
+    }
+    .song-name {
+        margin-top: 3%;
+    }
+    .top-grid-2{
+        top: 0%;
+    }
+    .album-1 {
+        margin-top: 25px;
+    }
+    .image-album {
+        width: 30%;
+    }
+    .content-album{
+        width: 60%;
+    }
+    .hexa-album-1 {
+        width: 280px !important;
+        height: 140px;
+        margin-left: -35px;
+    }
+    .content-album .number {
+        font-size: 70px;
+        line-height: 50px;
+    }
+    .content-album .content {
+        font-size: 28px;
+        padding-top: 5px;
+        line-height: normal;
+    }
+    .content-album .singer {
+        font-size: 18px;
+        padding-top: 5px;
+    }
+    .lst-album-song {
+        margin-top: 30px;
+    }
+    .hexa-album {
+        width: 220px !important;
+        height: 110px !important;
+        margin-left: -55px;
+    }
+    .lst-album-song .image-album {
+        padding-left: 15px;
+        width: 135px;
+        height: 120px;
+    }
+    .lst-album-song .content-album-lst {
+        width: 48%;
+        float: left;
+    }
+    .lst-album-song .content-album-lst .number-lst {
+        font-size: 45px;
+        line-height: 35px;
+    }
+    .lst-album-song .content-album-lst .content-lst {
+        font-size: 18px;
+        margin-top: 10px;
+        max-height: 45px !important;
+    }
+    .lst-album-song .content-album-lst .singer-lst {
+        font-size: 14px;
+        padding-top: 5px;
+        max-height: 25px !important;
+        max-width: 200px;
+    }
+    .lst-album-song .margin-top-index {
+        margin-top: 25px;
+    }
+}
+@media only screen and (min-width: 1500px) and (max-width: 1600px) {
+    .content-page{
+        width: 100%;
+        float: left;
+        height: auto;
+        background: url(../images/background-dashboard.jpg);
+        background-size: 100%;
+        background-repeat: repeat-y;
+        padding-bottom: 55px;
+    }
+    .grid-left-1{
+        margin-top: 50px;
+        left: 1%;
+        width: 46%;
+    }
+    .grid-left-2{
+        float: left;
+        width: 46%;
+        position: absolute;
+        margin-top: 0px;
+        left: 33%;
+    }
+    .info-grid .number-grid {
+        font-size: 50px;
+        line-height: 50px;
+        
+        margin-left: 0%;
+        width: 180px;
+    }
+    .info-grid .des-grid {
+        font-size: 14px;
+        width: 100%;
+        max-width: 180px;
+        overflow: hidden;
+        margin-left: 0%;
+    }
+    
+    .logo {
+        margin-top: 5%;
+    }
+    .song-name {
+        margin-top: 3%;
+    }
+    .top-grid-2{
+        top: 0%;
+    }
+    .album-1 {
+        margin-top: 25px;
+    }
+    .image-album {
+        width: 30%;
+    }
+    .content-album{
+        width: 60%;
+    }
+    .hexa-album-1 {
+        width: 280px !important;
+        height: 140px;
+        margin-left: -35px;
+    }
+    .content-album .number {
+        font-size: 70px;
+        line-height: 50px;
+    }
+    .content-album .content {
+        font-size: 28px;
+        padding-top: 5px;
+        line-height: normal;
+    }
+    .content-album .singer {
+        font-size: 18px;
+        padding-top: 5px;
+    }
+    .lst-album-song {
+        margin-top: 30px;
+    }
+    .hexa-album {
+        width: 220px !important;
+        height: 110px !important;
+        margin-left: -55px;
+    }
+    .lst-album-song .image-album {
+        padding-left: 15px;
+        width: 135px;
+        height: 120px;
+    }
+    .lst-album-song .content-album-lst {
+        width: 48%;
+        float: left;
+    }
+    .lst-album-song .content-album-lst .number-lst {
+        font-size: 45px;
+        line-height: 35px;
+    }
+    .lst-album-song .content-album-lst .content-lst {
+        font-size: 18px;
+        margin-top: 10px;
+        max-height: 45px !important;
+    }
+    .lst-album-song .content-album-lst .singer-lst {
+        font-size: 14px;
+        padding-top: 5px;
+        max-height: 25px !important;
+        max-width: 200px;
+    }
+    .lst-album-song .margin-top-index {
+        margin-top: 25px;
+    }
+}
+@media only screen and (min-width: 1400px) and (max-width: 1500px) {
+    .content-page{
+        width: 100%;
+        float: left;
+        height: auto;
+        background: url(../images/background-dashboard.jpg);
+        background-size: 100%;
+        background-repeat: repeat-y;
+        padding-bottom: 55px;
+    }
+    .grid-left-1{
+        margin-top: 45px;
+        left: 1%;
+        width: 49%;
+    }
+    .grid-left-2{
+        float: left;
+        width: 49%;
+        position: absolute;
+        margin-top: 0px;
+        left: 35.5%;
+    }
+    .info-grid .number-grid {
+        font-size: 50px;
+        line-height: 50px;
+        
+        margin-left: 0%;
+        width: 180px;
+    }
+    .info-grid .des-grid {
+        font-size: 14px;
+        width: 100%;
+        max-width: 180px;
+        overflow: hidden;
+        margin-left: 0%;
+    }
+    
+    .logo {
+        margin-top: 5%;
+    }
+    .song-name {
+        margin-top: 3%;
+    }
+    .top-grid-2{
+        top: 0%;
+    }
+    .album-1 {
+        margin-top: 25px;
+    }
+    .image-album {
+        width: 30%;
+    }
+    .content-album{
+        width: 60%;
+    }
+    .hexa-album-1 {
+        width: 280px !important;
+        height: 140px;
+        margin-left: -35px;
+    }
+    .content-album .number {
+        font-size: 70px;
+        line-height: 50px;
+    }
+    .content-album .content {
+        font-size: 28px;
+        padding-top: 5px;
+        line-height: normal;
+    }
+    .content-album .singer {
+        font-size: 18px;
+        padding-top: 5px;
+    }
+    .lst-album-song {
+        margin-top: 30px;
+    }
+    .hexa-album {
+        width: 220px !important;
+        height: 110px !important;
+        margin-left: -55px;
+    }
+    .lst-album-song .image-album {
+        padding-left: 15px;
+        width: 135px;
+        height: 120px;
+    }
+    .lst-album-song .content-album-lst {
+        width: 48%;
+        float: left;
+    }
+    .lst-album-song .content-album-lst .number-lst {
+        font-size: 45px;
+        line-height: 35px;
+    }
+    .lst-album-song .content-album-lst .content-lst {
+        font-size: 18px;
+        margin-top: 10px;
+        max-height: 45px !important;
+    }
+    .lst-album-song .content-album-lst .singer-lst {
+        font-size: 14px;
+        padding-top: 5px;
+        max-height: 25px !important;
+        max-width: 200px;
+    }
+    .lst-album-song .margin-top-index {
+        margin-top: 25px;
+    }
+}
+@media only screen and (min-width: 1280px) and (max-width: 1400px) {
+    .content-page{
+        width: 100%;
+        float: left;
+        height: auto;
+        background: url(../images/background-dashboard.jpg);
+        background-size: 100%;
+        background-repeat: repeat-y;
+        padding-bottom: 0px;
+    }
+    .grid-left-1{
+        margin-top: 48px;
+        left: 2%;
+        width: 50.7%;
+    }
+    .info-grid .number-grid {
+        font-size: 50px;
+        line-height: 75px;
+        width: 175px;
+        margin-left: 0%;
+    }
+    .info-grid .des-grid {
+        font-size: 14px;
+        width: 175px;
+        max-width: 180px;
+        overflow: hidden;
+        margin-left: 0%;
+    }
+    .grid-left-2{
+        float: left;
+        width: 50.7%;
+        position: absolute;
+        margin-top: 0px;
+        left: 37%;
+    }
+    .logo {
+        margin-top: 5%;
+    }
+    .logo img {
+        width: 55%;
+    }
+    .song-name {
+        margin-top: 3%;
+    }
+    .top-grid-2{
+        top: 0%;
+    }
+    .album-1 {
+        margin-top: 25px;
+    }
+    .image-album {
+        width: 30%;
+    }
+    .content-album{
+        width: 60%;
+        margin-left: 0px;
+    }
+    .hexa-album-1 {
+        width: 280px !important;
+        height: 140px;
+        margin-left: -35px;
+    }
+    .content-album .number {
+        font-size: 70px;
+        line-height: 50px;
+    }
+    .content-album .content {
+        font-size: 28px;
+        padding-top: 5px;
+        line-height: normal;
+    }
+    .content-album .singer {
+        font-size: 18px;
+        padding-top: 5px;
+    }
+    .lst-album-song {
+        margin-top: 30px;
+    }
+    .hexa-album {
+        width: 220px !important;
+        height: 110px !important;
+        margin-left: -55px;
+    }
+    .lst-album-song .image-album {
+        padding-left: 15px;
+        width: 135px;
+        height: 120px;
+    }
+    .lst-album-song .content-album-lst {
+        width: 48%;
+        float: left;
+    }
+    .lst-album-song .content-album-lst .number-lst {
+        font-size: 45px;
+        line-height: 35px;
+    }
+    .lst-album-song .content-album-lst .content-lst {
+        font-size: 18px;
+        margin-top: 10px;
+    }
+    .lst-album-song .content-album-lst .singer-lst {
+        font-size: 14px;
+        padding-top: 5px;
+        overflow: hidden;
+        max-height: 25px !important;
+        max-width: 200px;
+    }
+    
+    .lst-album-song .margin-top-index {
+        margin-top: 25px;
+    }
+}
+@media only screen and (min-width: 1200px) and (max-width: 1280px) {
+    .content-page{
+        width: 100%;
+        float: left;
+        height: auto;
+        background: url(../images/background-dashboard.jpg);
+        background-size: 100%;
+        background-repeat: repeat-y;
+    }
+    .grid-left-1{
+        margin-top: 45px;
+        left: 3%;
+        width: 50.7%;
+    }
+    .grid-left-2{
+        float: left;
+        width: 50.7%;
+        position: absolute;
+        margin-top: 0px;
+        left: 38%;
+    }
+    .info-grid .number-grid {
+        font-size: 45px;
+        line-height: 75px;
+        width: 180px;
+        margin-left: 0%;
+    }
+    .info-grid .des-grid {
+        font-size: 12px;
+        width: 100%;
+        max-width: 180px;
+        overflow: hidden;
+        margin-left: 0%;
+    }
+    
+    .logo {
+        margin-top: 6%;
+    }
+    .logo img {
+        width: 55%;
+    }
+    .song-name {
+        margin-top: 3%;
+    }
+    .top-grid-2{
+        top: 0%;
+    }
+    .album-1 {
+        margin-top: 25px;
+    }
+    .image-album {
+        width: 25%;
+    }
+    .content-album{
+        width: 60%;
+    }
+    .hexa-album-1 {
+        width: 175px !important;
+        height: 150px;
+        margin-left: -35px;
+    }
+    .content-album .number {
+        font-size: 70px;
+        line-height: 50px;
+    }
+    .content-album .content {
+        font-size: 28px;
+        padding-top: 5px;
+        line-height: normal;
+    }
+    .content-album .singer {
+        font-size: 18px;
+        padding-top: 5px;
+    }
+    .lst-album-song {
+        margin-top: 30px;
+    }
+    .hexa-album {
+        width: 130px !important;
+        height: 110px !important;
+        margin-left: -40px;
+    }
+    .lst-album-song .image-album {
+        padding-left: 15px;
+        width: 110px;
+        height: 120px;
+    }
+    .lst-album-song .content-album-lst {
+        width: 42%;
+        float: left;
+    }
+    .lst-album-song .content-album-lst .number-lst {
+        font-size: 45px;
+        line-height: 35px;
+    }
+    .lst-album-song .content-album-lst .content-lst {
+        font-size: 18px;
+        margin-top: 10px;
+        max-height: 45px;
+    }
+    .lst-album-song .content-album-lst .singer-lst {
+        font-size: 14px;
+        padding-top: 5px;
+        max-height: 30px;
+            
+    }
+    .lst-album-song .margin-top-index {
+        margin-top: 25px;
+    }
+}
+@media only screen and (min-width: 1100px) and (max-width: 1200px) {
+    .content-page{
+        width: 100%;
+        float: left;
+        height: auto;
+        background: url(../images/background-dashboard.jpg);
+        background-size: 100%;
+        background-repeat: repeat-y;
+    }
+    .grid-left-1{
+        margin-top: 46px;
+        left: 0%;
+        width: 60%;
+    }
+    .info-grid .number-grid {
+        font-size: 50px;
+        line-height: 75px;
+        width: 100%;
+        margin-left: 0%;
+    }
+    .info-grid .des-grid {
+        font-size: 12px;
+        width: 100%;
+        max-width: 150px;
+        overflow: hidden;
+        margin-left: 0%;
+    }
+    .grid-left-2{
+        float: left;
+        width: 60%;
+        position: absolute;
+        margin-top: 0px;
+        left: 43%;
+    }
+    .logo {
+        margin-top: 5%;
+    }
+    .song-name {
+        margin-top: 3%;
+    }
+    .top-grid-2{
+        top: 0%;
+    }
+    .album-1 {
+        margin-top: 25px;
+    }
+    .image-album {
+        width: 30%;
+    }
+    .content-album{
+        width: 60%;
+    }
+    .hexa-album-1 {
+        width: 280px !important;
+        height: 140px;
+        margin-left: -35px;
+    }
+    .content-album .number {
+        font-size: 70px;
+        line-height: 50px;
+    }
+    .content-album .content {
+        font-size: 28px;
+        padding-top: 5px;
+        line-height: normal;
+    }
+    .content-album .singer {
+        font-size: 18px;
+        padding-top: 5px;
+    }
+    .lst-album-song {
+        margin-top: 30px;
+    }
+    .hexa-album {
+        width: 220px !important;
+        height: 110px !important;
+        margin-left: -55px;
+    }
+    .lst-album-song .image-album {
+        padding-left: 15px;
+        width: 135px;
+        height: 120px;
+    }
+    .lst-album-song .content-album-lst {
+        width: 38%;
+        float: left;
+    }
+    .lst-album-song .content-album-lst .number-lst {
+        font-size: 45px;
+        line-height: 35px;
+    }
+    .lst-album-song .content-album-lst .content-lst {
+        font-size: 18px;
+        margin-top: 10px;
+    }
+    .lst-album-song .content-album-lst .singer-lst {
+        font-size: 14px;
+        padding-top: 5px;
+    }
+    .lst-album-song .margin-top-index {
+        margin-top: 25px;
+    }
+}
+@media only screen and (min-width: 1000px) and (max-width: 1100px) {
+    .content-page{
+        width: 100%;
+        float: left;
+        height: auto;
+        background: url(../images/background-dashboard.jpg);
+        background-size: 100%;
+        background-repeat: repeat-y;
+    }
+    .grid-left-1{
+        margin-top: 46px;
+        left: 0%;
+        width: 65%;
+    }
+    .grid-left-2{
+        float: left;
+        width: 65%;
+        position: absolute;
+        margin-top: 0px;
+        left: 45%;
+    }
+    .info-grid .number-grid {
+        font-size: 50px;
+        line-height: 75px;
+        width: 100%;
+        margin-left: 0%;
+    }
+    .info-grid .des-grid {
+        font-size: 12px;
+        width: 100%;
+        max-width: 150px;
+        overflow: hidden;
+        margin-left: 0%;
+    }
+    .logo {
+        margin-top: 5%;
+    }
+    .song-name {
+        margin-top: 3%;
+    }
+    .top-grid-2{
+        top: 0%;
+    }
+    .album-1 {
+        margin-top: 25px;
+    }
+    .image-album {
+        width: 30%;
+    }
+    .content-album{
+        width: 60%;
+    }
+    .hexa-album-1 {
+        width: 280px !important;
+        height: 140px;
+        margin-left: -35px;
+    }
+    .content-album .number {
+        font-size: 70px;
+        line-height: 50px;
+    }
+    .content-album .content {
+        font-size: 28px;
+        padding-top: 5px;
+        line-height: normal;
+    }
+    .content-album .singer {
+        font-size: 18px;
+        padding-top: 5px;
+    }
+    .lst-album-song {
+        margin-top: 30px;
+    }
+    .hexa-album {
+        width: 220px !important;
+        height: 110px !important;
+        margin-left: -55px;
+    }
+    .lst-album-song .image-album {
+        padding-left: 15px;
+        width: 135px;
+        height: 120px;
+    }
+    .lst-album-song .content-album-lst {
+        width: 33%;
+        float: left;
+    }
+    .lst-album-song .content-album-lst .number-lst {
+        font-size: 45px;
+        line-height: 35px;
+    }
+    .lst-album-song .content-album-lst .content-lst {
+        font-size: 18px;
+        margin-top: 10px;
+        max-height: 45px;
+    }
+    .lst-album-song .content-album-lst .singer-lst {
+        font-size: 14px;
+        padding-top: 5px;
+        max-height: 25px;
+    }
+    .lst-album-song .margin-top-index {
+        margin-top: 25px;
+    }
+}
+@media only screen and (min-width: 950px) and (max-width: 1000px){
+    .content-page{
+        width: 100%;
+        float: left;
+        height: auto;
+        background: url(../images/background-dashboard.jpg);
+        background-size: 100%;
+        background-repeat: repeat-y;
+    }
+    .grid-left-1{
+        margin-top: 65px;
+        left: 10%;
+        width: 50%;
+        position: relative;
+    }
+    .grid-left-2{
+        float: left;
+        width: 50%;
+        position: absolute;
+        margin-top: 0px;
+        left: 42%;
+    }
+    .song-name {
+        margin: auto;
+        margin-top: 5%;
+    }
+    .lst-album-song .margin-top-index {
+        margin-top: 0px;
+    }
+    .flt-left{
+        margin-bottom: 15px;
+    }
+}
+@media only screen and (min-width: 900px) and (max-width: 950px){
+    .content-page{
+        width: 100%;
+        float: left;
+        height: auto;
+        background: url(../images/background-dashboard.jpg);
+        background-size: 100%;
+        background-repeat: repeat-y;
+    }
+    .grid-left-1{
+        margin-top: 65px;
+        left: 8.5%;
+        width: 50%;
+        position: relative;
+    }
+    .grid-left-2{
+        float: left;
+        width: 50%;
+        position: absolute;
+        margin-top: 0px;
+        left: 42%;
+    }
+    .song-name {
+        margin: auto;
+        margin-top: 5%;
+    }
+    .lst-album-song .margin-top-index {
+        margin-top: 0px;
+    }
+    .flt-left{
+        margin-bottom: 15px;
+    }
+}
+@media only screen and (min-width: 850px) and (max-width: 900px){
+    .content-page{
+        width: 100%;
+        float: left;
+        height: auto;
+        background: url(../images/background-dashboard.jpg);
+        background-size: 100%;
+        background-repeat: repeat-y;
+    }
+    .grid-left-1{
+        margin-top: 65px;
+        left: 6.5%;
+        width: 50%;
+        position: relative;
+    }
+    .grid-left-2{
+        float: left;
+        width: 50%;
+        position: absolute;
+        margin-top: 0px;
+        left: 42%;
+    }
+    .song-name {
+        margin: auto;
+        margin-top: 5%;
+    }
+    .lst-album-song .margin-top-index {
+        margin-top: 0px;
+    }
+    .flt-left{
+        margin-bottom: 15px;
+    }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 850px){
+    .content-page{
+        width: 100%;
+        float: left;
+        height: auto;
+        background: url(../images/background-dashboard.jpg);
+        background-size: 100%;
+        background-repeat: repeat-y;
+    }
+    .grid-left-1{
+        margin-top: 65px;
+        left: 2%;
+        width: 60%;
+        position: relative;
+    }
+    .grid-left-2{
+        float: left;
+        width: 60%;
+        position: absolute;
+        margin-top: 0px;
+        left: 40%;
+    }
+    .info-grid{
+        width: 60%;
+    }
+    .info-grid .number-grid {
+        font-size: 50px;
+        line-height: 75px;
+        width: 100%;
+        margin-left: 0%;
+    }
+    .info-grid .des-grid {
+        font-size: 12px;
+        width: 100%;
+        max-width: 150px;
+        overflow: hidden;
+    }
+    .logo {
+        margin-top: 10%;
+    }
+    .song-name {
+        margin-top: 3%;
+    }
+    .top-grid-2{
+        top: 0%;
+    }
+    .album-1 {
+        margin-top: 25px;
+    }
+    .image-album {
+        width: 30%;
+    }
+    .content-album{
+        width: 60%;
+    }
+    .hexa-album-1 {
+        width: 280px !important;
+        height: 140px;
+        margin-left: -35px;
+    }
+    .content-album .number {
+        font-size: 70px;
+        line-height: 50px;
+    }
+    .content-album .content {
+        font-size: 28px;
+        padding-top: 5px;
+        line-height: normal;
+    }
+    .content-album .singer {
+        font-size: 18px;
+        padding-top: 5px;
+    }
+    .lst-album-song {
+        margin-top: 30px;
+    }
+    .hexa-album {
+        width: 220px !important;
+        height: 110px !important;
+        margin-left: -55px;
+    }
+    .lst-album-song .image-album {
+        padding-left: 15px;
+        width: 135px;
+        height: 120px;
+    }
+    .lst-album-song .content-album-lst {
+        width: 42%;
+        float: left;
+    }
+    .lst-album-song .content-album-lst .number-lst {
+        font-size: 45px;
+        line-height: 35px;
+    }
+    .lst-album-song .content-album-lst .content-lst {
+        font-size: 18px;
+        margin-top: 10px;
+    }
+    .lst-album-song .content-album-lst .singer-lst {
+        font-size: 14px;
+        padding-top: 5px;
+    }
+    .lst-album-song .margin-top-index {
+        margin-top: 0px;
+    }
+}
+@media only screen and (min-width: 750px) and (max-width: 800px){
+    .content-page{
+        width: 100%;
+        float: left;
+        height: auto;
+        background: url(../images/background-dashboard.jpg);
+        background-size: 100%;
+        background-repeat: repeat-y;
+    }
+    .grid-left-1{
+        margin-top: 62px;
+        left: 0%;
+        width: 55%;
+        position: relative;
+    }
+    .grid-left-2{
+        float: left;
+        width: 52%;
+        position: absolute;
+        margin-top: 0px;
+        left: 40%;
+    }
+    .info-grid{
+        width: 60%;
+    }
+    .info-grid .number-grid {
+        font-size: 50px;
+        line-height: 75px;
+        width: 100%;
+        margin-left: 0%;
+    }
+    .info-grid .des-grid {
+        font-size: 12px;
+        width: 100%;
+        max-width: 150px;
+        overflow: hidden;
+        
+    }
+    .logo {
+        margin-top: 10%;
+    }
+    .song-name {
+        margin-top: 3%;
+    }
+    .top-grid-2{
+        top: 0%;
+    }
+    .album-1 {
+        margin-top: 25px;
+    }
+    .image-album {
+        width: 30%;
+    }
+    .content-album{
+        width: 60%;
+    }
+    .hexa-album-1 {
+        width: 280px !important;
+        height: 140px;
+        margin-left: -35px;
+    }
+    .content-album .number {
+        font-size: 70px;
+        line-height: 50px;
+    }
+    .content-album .content {
+        font-size: 28px;
+        padding-top: 5px;
+        line-height: normal;
+    }
+    .content-album .singer {
+        font-size: 18px;
+        padding-top: 5px;
+    }
+    .lst-album-song {
+        margin-top: 30px;
+    }
+    .hexa-album {
+        width: 220px !important;
+        height: 110px !important;
+        margin-left: -55px;
+    }
+    .lst-album-song .image-album {
+        padding-left: 15px;
+        width: 135px;
+        height: 120px;
+    }
+    .lst-album-song .content-album-lst {
+        width: 42%;
+        float: left;
+    }
+    .lst-album-song .content-album-lst .number-lst {
+        font-size: 45px;
+        line-height: 35px;
+    }
+    .lst-album-song .content-album-lst .content-lst {
+        font-size: 18px;
+        margin-top: 10px;
+    }
+    .lst-album-song .content-album-lst .singer-lst {
+        font-size: 14px;
+        padding-top: 5px;
+    }
+    .lst-album-song .margin-top-index {
+        margin-top: 0px;
+    }
+}
+@media only screen and (min-width: 700px) and (max-width: 750px){
+    .content-page{
+        width: 100%;
+        float: left;
+        height: auto;
+        background: url(../images/background-dashboard.jpg);
+        background-size: 100%;
+        background-repeat: repeat-y;
+    }
+    .grid-left-1{
+        margin-top: 62px;
+        left: 0%;
+        width: 55%;
+        position: relative;
+    }
+    .grid-left-2{
+        float: left;
+        width: 52%;
+        position: absolute;
+        margin-top: 0px;
+        left: 40%;
+    }
+    .info-grid{
+        width: 60%;
+    }
+    .info-grid .des-grid {
+        font-size: 12px;
+        width: 100%;
+        max-width: 150px;
+        overflow: hidden;
+        
+    }
+    
+}
+@media only screen and (min-width: 650px) and (max-width: 700px){
+    .content-page{
+        width: 100%;
+        float: left;
+        height: auto;
+        background: url(../images/background-dashboard.jpg);
+        background-size: 100%;
+        background-repeat: repeat-y;
+    }
+    .grid-left-1{
+        margin-top: 55px;
+        left: 0%;
+        width: 55%;
+        position: relative;
+    }
+    .grid-left-2{
+        float: left;
+        width: 52%;
+        position: absolute;
+        margin-top: 0px;
+        left: 40%;
+    }
+    .info-grid{
+        width: 60%;
+    }
+    .info-grid .des-grid {
+        font-size: 12px;
+        width: 100%;
+        max-width: 150px;
+        overflow: hidden;
+        
+    }
+    
+}
+@media only screen and (min-width: 600px) and (max-width: 650px){
+    .content-page{
+        width: 100%;
+        float: left;
+        height: auto;
+        background: url(../images/background-dashboard.jpg);
+        background-size: 100%;
+        background-repeat: repeat-y;
+    }
+    .grid-left-1{
+        margin-top: 50px;
+        left: 0%;
+        width: 55%;
+        position: relative;
+    }
+    .grid-left-2{
+        float: left;
+        width: 52%;
+        position: absolute;
+        margin-top: 0px;
+        left: 40%;
+    }
+    .info-grid{
+        width: 60%;
+    }
+    .info-grid .des-grid {
+        font-size: 12px;
+        width: 100%;
+        max-width: 150px;
+        overflow: hidden;
+        
+    }
+    
+}
+
+@media only screen and (max-width: 600px){
+    .grid-left-1{
+        position: relative !important;
+        width: 100%;
+        left:0%;
+        float: left;
+    }
+    .grid-left-2{
+        position: relative !important;
+        width: 100%;
+        left:0%;
+        float: left;
+        margin-top: 3px;
+    }
+    .image{
+        width: 100%;
+        float: left;
+        text-align: center;
+    }
+    .flt-left{
+        float: left;
+        width: 100% !important;
+    }
+    .info-grid {
+        position: absolute;
+        top: 25%;
+        width: 100%;
+        left: 0%;
+        text-align: center;
+    }
+    
+    
+}
+
+@media only screen and (max-width: 768px){
+    .content-album {
+        width: 60%;
+    }
+    .flt-left{
+        float: left;
+        width: 100% !important;
+    }
+    .song-name {
+        margin: auto;
+        margin-top: 10%;
+    }
+}
+@media only screen and (max-width: 768px){
+    .logo img {
+        width: 100%;
+        float: left;
+        padding-top: 50px;
+    }
+    .margin-top-index{
+        margin-top: 0px !important;
+    }
+    .info-grid .number-grid {
+        font-size: 50px;
+        line-height: 75px;
+        width: 100%;
+        margin-left: 0%;
+    }
+    .info-grid .des-grid {
+        font-size: 12px;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        margin-left: 0%;
+    }
+    .logo {
+        margin-top: 5%;
+    }
+    .song-name {
+        margin-top: 3%;
+    }
+    .top-grid-2{
+        top: 0%;
+    }
+    .album-1 {
+        margin-top: 25px;
+    }
+    .image-album {
+        width: 30%;
+    }
+    .content-album{
+        width: 60%;
+    }
+    .hexa-album-1 {
+        width: 200px !important;
+        height: 140px;
+        margin-left: -35px;
+    }
+    .content-album .number {
+        font-size: 70px;
+        line-height: 50px;
+    }
+    .content-album .content {
+        font-size: 28px;
+        padding-top: 5px;
+        line-height: normal;
+    }
+    .content-album .singer {
+        font-size: 18px;
+        padding-top: 5px;
+    }
+    .lst-album-song {
+        margin-top: 30px;
+    }
+    .hexa-album {
+        width: 190px !important;
+        height: 110px !important;
+        margin-left: -55px;
+    }
+    .lst-album-song .image-album {
+        padding-left: 15px;
+        width: 120px;
+        height: 120px;
+    }
+    .lst-album-song .content-album-lst {
+        width: 42%;
+        float: left;
+    }
+    .lst-album-song .content-album-lst .number-lst {
+        font-size: 45px;
+        line-height: 35px;
+    }
+    .lst-album-song .content-album-lst .content-lst {
+        font-size: 18px;
+        margin-top: 10px;
+    }
+    .lst-album-song .content-album-lst .singer-lst {
+        font-size: 14px;
+        padding-top: 5px;
+    }
+    .lst-album-song .margin-top-index {
+        margin-top: 25px;
+    }
+}
+@media only screen and (max-width: 500px){
+    .content-album {
+        width: 100% !important;
+        margin-left: 0px !important;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }   
+    .lst-album-song .content-album-lst {
+        width: 100% !important;
+        float: left;
+        margin-left: 15px !important;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+}
