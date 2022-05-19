@@ -1027,7 +1027,7 @@
                       <div class="text">Free to use<br><br>UP TO 7 DAYS</div>
                   </div>
                   <div class="info_regist">
-                      <span id="form_popup_regist" class="close"></span>
+                      <span class="close"></span>
                       <div class="head">Sign up for a trial</div>
                       <div class="children">Use copyrighted music the right way</div>
                       <div class="regist_form">
