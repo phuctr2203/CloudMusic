@@ -19,13 +19,13 @@
                 $_SESSION['phone'] = $user['phone'];
                 $_SESSION['password'] = $user['password'];
                 
-                
                 echo '<script>
                     alert("Login successfully!");
                     window.location.href = "../admin_database/audio_beat.php";
                 </script>';
             }
             elseif ($user['email'] == $email && password_verify($password, $user['password'])){ 
+                
                 $check = false;
                 $_SESSION['user_id'] = $user['_id'];
                 $_SESSION['name'] = $user['name'];
@@ -36,6 +36,7 @@
                 
                 echo '<script>
                     window.location.href = "../home/personal_account.php";
+                    
                 </script>';
             }
             

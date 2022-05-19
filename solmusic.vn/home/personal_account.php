@@ -47,10 +47,10 @@
                         </a>
                         <div class="dropdown-menu" style="padding-left:10px;">
                         <?php if($_SESSION['email'] == "admin@gmail.com"):?>
-                                    <p><a class="dropdown-item fa fa-user" aria-hidden="true" href="../home/admin_profile.php">Profile</a></p>
-                                <?php else: ?>
-                                    <p><a class="dropdown-item fa fa-user" aria-hidden="true" href="../home/profile.php">Profile</a></p>
-                                <?php endif; ?>
+                            <p><a class="dropdown-item fa fa-user" aria-hidden="true" href="../home/admin_profile.php">Profile</a></p>
+                        <?php else: ?>
+                            <p><a class="dropdown-item fa fa-user" aria-hidden="true" href="../home/profile.php">Profile</a></p>
+                        <?php endif; ?>
                         <p><a class="dropdown-item" href="../auth/logout.php">Logout</a></p>
                         </div>
                         </li>

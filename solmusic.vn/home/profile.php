@@ -52,17 +52,17 @@ session_start();
 <nav class="navbar navbar-default " role="navigation">
     <div class="navbar-header">
     
-    <a class="navbar-brand" href="v1.php"><img src="../assets/images/logo.png" alt="logo" style="margin-top: -22px;"></a>
+    <a class="navbar-brand" href="v2.php"><img src="../assets/images/logo.png" alt="logo" style="margin-top: -22px;"></a>
     </div>
 
     <div class="collapse navbar-collapse navbar-ex1-collapse" id="navbar-muziq">
     <ul class="nav navbar-nav navbar-right">
         <li class="active"><a href="v2.php">Home</a></li>
-        <?php if ($_SESSION['email'] = "admin@gmail.com"): ?>
+        <?php if($_SESSION['email'] == "admin@gmail.com"): ?>
             <li><a href="../admin_database/audio_beat.php">Playlist</a></li>
-          <?php else: ?>
+        <?php else: ?>
             <li><a href="../home/personal_account.php">Playlist</a></li>
-          <?php endif; ?>
+        <?php endif; ?>
         <li><a href="#" class="contactsky">Contact</a></li>
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
