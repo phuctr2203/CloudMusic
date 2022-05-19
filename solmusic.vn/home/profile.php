@@ -95,6 +95,7 @@ session_start();
 </div>
 <br>
 <br>
+<button onclick="document.location='../auth/changepwd.php'" style="width: 20%; text-align:center; margin-left: 600px;" class="btn btn-primary btn-block btn-flat">Chagne Password</button>
 <button onclick="document.location='../auth/logout.php'" style="width: 20%; text-align:center; margin-left: 600px;" class="btn btn-primary btn-block btn-flat">Log Out</button>
 
 </div>

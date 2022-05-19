@@ -17,6 +17,8 @@
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['gender'] = $user['gender'] == 0 ? 'Male' : 'Female';
                 $_SESSION['phone'] = $user['phone'];
+                $_SESSION['password'] = $user['password'];
+                
                 
                 echo '<script>
                     alert("Login successfully!");
@@ -30,6 +32,7 @@
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['gender'] = $user['gender'] == 0 ? 'Male' : 'Female';
                 $_SESSION['phone'] = $user['phone'];
+                $_SESSION['password'] = $user['password'];
                 
                 echo '<script>
                     window.location.href = "../home/v2.php";

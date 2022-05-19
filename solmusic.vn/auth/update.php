@@ -15,12 +15,17 @@
     $pwd = $_SESSION['password'];
     
     $query = ['email'=> $user];
-    $update = ['password' => password_hash($pwd, PASSWORD_BCRYPT)];
+    $update = ['password' => password_hash($new, PASSWORD_BCRYPT)];
 
-    if($old == $pwd) {
-        $collection->update(
-            $query, 
-            $update
+    //if (password_hash($old, PASSWORD_BCRYPT) == $pwd) {
+        $collection->updateOne(
+            $query,
+            ['$set' => $update]
         );
-    }
+    //}
+    echo '<script>
+    alert("Password changed successfully! REMEMBER IT PLEASE!");
+    window.location.href = "../home/v1.php";
+    </script>';
+
 ?>
