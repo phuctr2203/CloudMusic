@@ -1020,14 +1020,14 @@
             </div>
         </div>
         </form>
-        <form id="form_popup_regist" method="post" action="../auth/post_register.php">
+        <form method="post" action="../auth/post_register.php">
           <div id="box_popup_regist">
               <div class="box_regist">
                   <div class="bg">
                       <div class="text">Free to use<br><br>UP TO 7 DAYS</div>
                   </div>
                   <div class="info_regist">
-                      <span class="close"></span>
+                      <span id="form_popup_regist" class="close"></span>
                       <div class="head">Sign up for a trial</div>
                       <div class="children">Use copyrighted music the right way</div>
                       <div class="regist_form">
@@ -1040,7 +1040,7 @@
                                   <span class="input-group-addon"><i class="fa fa-list-ul" aria-hidden="true"></i></span>
                                   <select name="gender" id="select" class="required selectpicker">
                                     <option value="0">Male</option>
-                                    <option value="1">Famale</option>
+                                    <option value="1">Female</option>
                                   </select>
                               </div>
                               <div class="group">
