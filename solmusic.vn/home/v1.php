@@ -640,7 +640,8 @@
   </section>
 
   <!-- STAY IN TOUCH -->
-  <section class="section stay-in-touch inverse-color parallax-section" data-parallax-image="../assets/khonhacbq.png" id="anchor02">
+  <section class="section stay-in-touch inverse-color parallax-section"  id="anchor02">
+    <div class="col-xs-12 col-md-12 biography-image" style="background: url('../../img.solmusic.vn/xmusicstation/home/images/bar_c.png') no-repeat center">
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-md-6">
