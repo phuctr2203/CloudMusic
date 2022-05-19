@@ -70,7 +70,7 @@
               <li><a href="../home/personal_account.php">Playlist</a></li>
           <?php endif; ?>
 
-          <li><a href="" class="contactsky">Contact</a></li>
+          <li><a href="#" class="contactsky">Contact</a></li>
           <?php if (!isset($_SESSION['user_id'])): ?>
             <li><a href="../auth/login.php">Login</a></li>
             <li><a href="" class="createpl">Sign Up</a></li>

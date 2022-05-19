@@ -64,9 +64,9 @@
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="">Home</a></li>
           <li><a href="#anchor03">Playlist</a></li>
-          <li><a href="" class="contactsky">Contact</a></li>
+          <li><a href="#" class="contactsky">Contact</a></li>
           <li><a href="../auth/login.php">Login</a></li>
-          <li><a href="" class="createpl">Sign Up</a></li>
+          <li><a href="#" class="createpl">Sign Up</a></li>
         </ul>
       </div>
     </nav>
