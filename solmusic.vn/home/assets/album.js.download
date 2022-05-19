@@ -1,0 +1,1186 @@
+/* global BootstrapDialog, GLOBAL_ROOT_URL */
+
+$(document).ready(function () {
+
+    // <editor-fold defaultstate="collapsed" desc="list">
+    /**
+     * auth album
+     * path: album/list
+     */
+    if ($('#formtype').length && $('#formtype').val() === 'album_list') {
+        keySubmit($('#keyword'), $('#search'));
+
+        $('#search').click(function () {
+            var keywordElm = $('#keyword');
+            var statusElm = $('#status');
+
+            var keyword = keywordElm.val();
+            var status = parseInt(statusElm.val());
+
+            var params = new Array();
+
+            if (keyword.length > 0) {
+                params.push({'key': 'q', 'value': keyword.trim().replace(/ /g, '+')});
+            }
+
+            if (status > 0) {
+                params.push({'key': 'status', 'value': status});
+            }
+
+            var url = '/album/list';
+
+            var queries = '';
+
+            if (params.length > 0) {
+                queries += '?';
+                $.each(params, function (index, data) {
+                    queries += data.key + '=' + data.value;
+                    if (index < (params.length - 1)) {
+                        queries += '&';
+                    }
+                });
+            }
+
+            window.location = url + queries;
+        });
+    }
+    // </editor-fold> 
+
+    // <editor-fold defaultstate="collapsed" desc="create">
+    /**
+     * user create
+     * path: album/create
+     */
+    if ($('#formtype').length && $('#formtype').val() === 'album_create') {
+
+        var buttonSearchElem = $('#search');
+        var inputKeywordElm = $('#keyword');
+        var searchTypeElm = $('#stype');
+        var usersearchElm = $('#userid');
+        var searchResultElm = $('#search_result');
+        var albumResultElem = $('#album_result');
+
+        keySubmit(inputKeywordElm, buttonSearchElem);
+
+        var addSong = function (item) {
+            var keyElms = albumResultElem.children('.list-group-item').find('.keys');
+
+            var keys = [];
+
+            keyElms.each(function () {
+                keys.push($(this).val());
+            });
+
+            /*var keyExists = $.grep(keys, function (key) {
+             return item.key === key;
+             });
+             
+             if (keyExists.length > 0) {
+             return;
+             }*/
+
+            var count = albumResultElem.children('.list-group-item').last().find('.count').attr('data-count');
+
+            if (count !== undefined) {
+                count++;
+            } else {
+                count = 1;
+            }
+
+            var copyright = '';
+
+            if (item.copyright) {
+                copyright = '<span class="fa fa-copyright fa-1" style="color: #dd4b39; margin-right: 3px;"></span>';
+            }
+
+            var html = '';
+            html += '<li class="list-group-item">';
+            html += '    <span class="count" data-count="' + count + '">' + count + '</span>';
+            html += '    <div title="' + item.title + ' - ' + item.artists + '" class="title">' + copyright + item.title + '<span> - ' + item.artists + '</span></div>';
+            html += '    <audio key="' + item.key + '" class="audio-album" length="' + item.duration + '" src="' + item.streamUrl + '" preload="none"></audio>';
+            html += '    <i class="fa fa-times-circle remove" aria-hidden="true" data-duration="' + item.duration + '" data-key=' + item.key + ' title="Xóa khỏi album"></i>';
+            html += '    <div class="player-control">';
+            html += '        <i class="fa fa-play-circle-o player-button" aria-hidden="true"></i>';
+            html += '        <span class="player-timer"></span>';
+            html += '        <div class="player-seek-bar">';
+            html += '            <div class="player-play-bar"></div>';
+            html += '        </div>';
+            html += '        <span class="player-duration"></span>';
+            html += '        <div class="kbit">kbit: ' + item.kbit + '</div>';
+            html += '    </div>';
+            html += '    <input class="keys" type="hidden" name="keys[]" value="' + item.key + '" />';
+            html += '</li>';
+
+            albumResultElem.append(html);
+            addTotalDuration(item.duration);
+            onPlayer();
+
+            onRemoveSong(item);
+        };
+
+        var onRemoveSong = function (item) {
+            if (item === undefined) {
+                albumResultElem.find('.remove').on('click', function () {
+                    updateTotalDuration($(this).data().duration);
+                    $(this).parent().remove();
+                    reorder();
+                });
+
+                return;
+            }
+
+            albumResultElem.find('.remove').on('click', function () {
+                var key = item.key;
+                var remove_key = $(this).data().key;
+                if (key === remove_key) {
+                    //console.log("data dura:" + $(this).data().duration);
+                    updateTotalDuration($(this).data().duration);
+                }
+                var keyElmExists = searchResultElm.children('.list-group-item').find('[data-key="' + item.key + '"]');
+
+                if (keyElmExists !== undefined) {
+                    keyElmExists.removeClass('added');
+                    keyElmExists.attr('title', 'Thêm vào album');
+
+                    keyElmExists.on('click', function () {
+                        $(this).off();
+                        $(this).addClass('added');
+                        $(this).attr('title', 'Đã thêm vào album');
+                        addSong(item);
+                    });
+                }
+
+                $(this).parent().remove();
+                reorder();
+            });
+        };
+
+        albumResultElem.sortable({
+            cursor: "move",
+            opacity: 0.9,
+            axis: 'y',
+            deactivate: function () {
+                reorder();
+            }
+        });
+
+        var reorder = function () {
+            var count = 0;
+
+            albumResultElem.find('.count').each(function () {
+                count++;
+                $(this).attr('data-count', count).text(count);
+            });
+        };
+
+        buttonSearchElem.search({
+            placeHolderElm: searchResultElm,
+            inputKeywordElm: inputKeywordElm,
+            inputTypesearchElm: searchTypeElm,
+            inputUsersearchElm: usersearchElm,
+            onAdd: addSong
+        });
+
+        var onPlayer = function () {
+            $(".audio-album").player({
+                defaultVolume: 1.0,
+                button: '.player-button',
+                seekBar: '.player-seek-bar',
+                playBar: '.player-play-bar',
+                duration: '.player-duration',
+                timer: '.player-timer',
+                css: {
+                    play: 'fa-play-circle-o',
+                    pause: 'fa-pause-circle-o',
+                    stop: 'fa-stop-circle-o'
+                }
+            });
+        };
+
+        onPlayer();
+        onRemoveSong();
+
+        searchResultElm.slimScroll({
+            height: '361px',
+            distance: '3px',
+            size: '5px',
+            start: 'top'
+        });
+
+        var isPhoneDevice = "ontouchstart" in document.documentElement;
+
+        if (!isPhoneDevice) {
+            albumResultElem.slimScroll({
+                height: '406px',
+                distance: '3px',
+                size: '5px',
+                start: 'top'
+            });
+        }
+
+        $(':file').jfilestyle({
+            input: false,
+            buttonText: '<span class="glyphicon glyphicon-folder-open"></span>'
+        });
+
+        if ($('#image_album').val().length > 0) {
+            $('#group_image_album').append($('<i class="fa fa-times remove-image" aria-hidden="true"></i>').css('cursor', 'pointer').on('click', function () {
+                $(this).parent().find('img').remove();
+                $('#image_album').val('');
+                $(this).remove();
+            }));
+        }
+
+        $('#file_image').change(function () {
+            var fd = new FormData();
+            fd.append('files', $('#file_image')[0].files[0]);
+            fd.append('token', $('#upload_token').val());
+
+            $.ajax({
+                url: $('#upload_url').val() + '/image?type=album',
+                data: fd,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                xhr: function ()
+                {
+                    var xhr = $.ajaxSettings.xhr();
+                    xhr.upload.addEventListener('progress', function (e) {
+                        if (e.lengthComputable) {
+                            var percentComplete = Math.floor(e.loaded / e.total * 100);
+
+                            console.log(percentComplete + '%');
+                        }
+                    }, false);
+
+                    xhr.addEventListener('progress', function (e) {
+                        if (e.lengthComputable) {
+                            var percentComplete = Math.floor(e.loaded / e.total * 100);
+
+                            console.log(percentComplete + '%');
+                        }
+                    }, false);
+
+                    return xhr;
+                },
+                success: function (data) {
+                    if (data.status === 'ok') {
+                        imageAlbumPreview(data);
+                    } else {
+                        alertModel(data.error.msg, BootstrapDialog.TYPE_WARNING);
+                    }
+                }
+            });
+        });
+        $('#file_upload').change(function () {
+            console.log('ajax upload');
+            var fd = new FormData();
+            fd.append('files', $('#file_upload')[0].files[0]);
+            fd.append('token', $('#upload_token').val());
+            var album_id = 1000;
+            $.ajax({
+                url: '/album/upload?album_id=' + album_id,
+                data: fd,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                xhr: function ()
+                {
+                    var xhr = $.ajaxSettings.xhr();
+                    xhr.upload.addEventListener('progress', function (e) {
+                        if (e.lengthComputable) {
+                            var percentComplete = Math.floor(e.loaded / e.total * 100);
+
+                            console.log(percentComplete + '%');
+                        }
+                    }, false);
+
+                    xhr.addEventListener('progress', function (e) {
+                        if (e.lengthComputable) {
+                            var percentComplete = Math.floor(e.loaded / e.total * 100);
+
+                            console.log(percentComplete + '%');
+                        }
+                    }, false);
+
+                    return xhr;
+                },
+                success: function (data) {
+                    if (data.status === 'ok') {
+                        imageAudioPreview(data.keyuiza);
+                    } else {
+                        alertModel(data.error.msg, BootstrapDialog.TYPE_WARNING);
+                    }
+                }
+            });
+        });
+        $('#baseform').bootstrapValidator({
+            excluded: ':disabled',
+            message: 'Dữ liệu nhập không hợp lệ',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                name: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Vui lòng nhập tiêu đề'
+                        },
+                        stringLength: {
+                            min: 3,
+                            max: 100,
+                            message: 'Tiêu đề phải từ 3 đến 100 ký tự'
+                        }
+                    }
+                },
+                desc: {
+                    validators: {
+                        stringLength: {
+                            min: 0,
+                            max: 499,
+                            message: 'Tiêu đề phải từ 10 đến 499 ký tự'
+                        }
+                    }
+                },
+                status: {
+                    validators: {
+                        greaterThan: {
+                            message: 'Vui lòng chọn trạng thái',
+                            value: 1
+                        }
+                    }
+                }
+            }
+        }).on('success.form.bv', function (e) {
+            e.preventDefault();
+
+            var $form = $(e.target);
+
+            $.post(window.location.href, $form.serialize(), function (data) {
+                if (data.status === 'ok') {
+                    alertModel('Lưu thành công.', BootstrapDialog.TYPE_SUCCESS, function () {
+                        window.location = '/album/list';
+                        //window.location = window.location.href;
+                    });
+                } else {
+                    alertModel(data.error.msg, BootstrapDialog.TYPE_WARNING, function () {
+                        $('#baseform').data('bootstrapValidator').resetForm();
+                    });
+                }
+            }, 'json');
+        });
+
+        $('#reset').click(function () {
+            $('#baseform').data('bootstrapValidator').resetForm();
+
+            window.location = window.location.href;
+        });
+
+        $('.popup-add-song').click(function () {
+            var isLoadForm = false;
+
+            BootstrapDialog.show({
+                title: 'Thêm bài hát bằng danh sách key',
+                message: $('<div></div>').load('/album/addSongDialog'),
+                closeByBackdrop: false,
+                closeByKeyboard: false,
+                buttons: [{
+                        label: 'Lưu',
+                        action: function (dialogRef) {
+                            if (isLoadForm === false) {
+                                addSongDialog(dialogRef);
+                                isLoadForm = true;
+                            }
+                        }
+                    }]
+            });
+        });
+
+        var addSongDialog = function (dialogRef) {
+            var keys = $('#keys').val();
+
+            $.post('/album/addSongDialog', {keys: keys}, function (data) {
+                if (data.status === 'ok') {
+                    for (var i in data.data) {
+                        addSong(data.data[i]);
+                    }
+
+                    dialogRef.close();
+                } else {
+                    alertModel(data.error.msg, BootstrapDialog.TYPE_WARNING);
+                }
+            });
+        };
+
+        $('.clear-all-song').click(function () {
+            albumResultElem.empty();
+            $("#totaltime").html(displayDuration(0));
+            $("#totaldur").val(0);
+        });
+        //////////////////
+        //select2
+        $('.select2').css('width', '200px').select2({allowClear: true})
+        $('#select2-multiple-style .btn').on('click', function (e) {
+            var target = $(this).find('input[type=radio]');
+            var which = parseInt(target.val());
+            if (which == 2)
+                $('.select2').addClass('tag-input-style');
+            else
+                $('.select2').removeClass('tag-input-style');
+        });
+
+        //////////////////
+        $('.multiselect').multiselect({
+            enableFiltering: true,
+            buttonClass: 'btn btn-white btn-primary',
+            templates: {
+                button: '<button type="button" class="multiselect dropdown-toggle" data-toggle="dropdown"></button>',
+                ul: '<ul class="multiselect-container dropdown-menu"></ul>',
+                filter: '<li class="multiselect-item filter"><div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span><input class="form-control multiselect-search" type="text"></div></li>',
+                filterClearBtn: '<span class="input-group-btn"><button class="btn btn-default btn-white btn-grey multiselect-clear-filter" type="button"><i class="fa fa-times-circle red2"></i></button></span>',
+                li: '<li><a href="javascript:void(0);"><label></label></a></li>',
+                divider: '<li class="multiselect-item divider"></li>',
+                liGroup: '<li class="multiselect-item group"><label class="multiselect-group"></label></li>'
+            }
+        });
+        //chosen
+        $('.chosen-select').chosen({
+            allow_single_deselect: true,
+            enableFiltering: true,
+            max_selected_options: 10,
+            buttonClass: 'btn btn-white btn-primary',
+
+        });
+        $(window)
+                .off('resize.chosen')
+                .on('resize.chosen', function () {
+                    $('.chosen-select').each(function () {
+                        var $this = $(this);
+                        $this.next().css({'width': '210px'});
+                    })
+                }).trigger('resize.chosen');
+        //resize chosen on sidebar collapse/expand
+        $(document).on('settings.ace.chosen', function (e, event_name, event_val) {
+            if (event_name != 'sidebar_collapsed')
+                return;
+            $('.chosen-select').each(function () {
+                var $this = $(this);
+                $this.next().css({'width': '210px'});//$this.parent().width()/2
+            })
+        });
+
+
+        $('#chosen-multiple-style .btn').on('click', function (e) {
+            var target = $(this).find('input[type=radio]');
+            var which = parseInt(target.val());
+            if (which == 2)
+                $('#form-field-select-4').addClass('tag-input-style');
+            else
+                $('#form-field-select-4').removeClass('tag-input-style');
+        });
+
+        $('#chosen-multiple-style .btn').on('click', function (e) {
+            var target = $(this).find('input[type=radio]');
+            var which = parseInt(target.val());
+            if (which == 2)
+                $('#form-field-select-4').addClass('tag-input-style');
+            else
+                $('#form-field-select-4').removeClass('tag-input-style');
+        });
+        $(this).find('.chosen-container').each(function () {
+            $(this).find('a:first-child').css('width', '210px');
+            $(this).find('.chosen-drop').css('width', '210px');
+            $(this).find('.chosen-search input').css('width', '200px');
+            $(this).find('.default').css('width', '120px');
+        });
+        //in ajax mode, remove remaining elements before leaving page
+        $(document).one('ajaxloadstart.page', function (e) {
+            $('[class*=select2]').remove();
+            $('.multiselect').multiselect('destroy');
+        });
+
+    }
+    // </editor-fold>
+
+    // <editor-fold defaultstate="collapsed" desc="edit">
+    /**
+     * user edit
+     * path: album/edit
+     */
+    if ($('#formtype').length && $('#formtype').val() === 'album_edit') {
+        /*var slider = document.getElementById("sliderRange");
+         var output = document.getElementById("slider");
+         output.innerHTML = slider.value;
+         slider.oninput = function() {
+         output.innerHTML = this.value;
+         output.value=this.value;
+         } 
+         var value=document.getElementById('sliderRange').value;
+         */
+        //console.log(value);
+        var hduiza = $('#hduiza').val();
+        var preview = $('#preview').val();
+        if (preview !== "") {
+            if (hduiza == 1) {
+                console.log('call uiza:' + hduiza);
+                var uizakey = "sk_" + preview;
+                if (uizakey !== "") {
+                    console.log('edit call');
+                    $.ajax({
+                        method: "POST",
+                        url: '/xmusic/song_detail',
+                        data: {
+                            key: uizakey
+                        }
+                    }).done(function (resp) {
+                        if (resp.status === 'ok') {
+                            var audiotag = '<audio controls autoplay><source src="' + resp.data.streamUrl + '" type="audio/ogg"></audio>';
+                            $("#divaudiopreview").html(audiotag);
+                        } else {
+                            console.log('request error, retry please.');
+
+                        }
+                    });
+                }
+            } else {
+                console.log('call vps:' + hduiza);
+                var stream_url = $('#sky_cdn_url').val() + '/' + preview;
+                var audiotag = '<audio controls autoplay><source src="' + stream_url + '" type="audio/ogg"></audio>';
+                $("#divaudiopreview").html(audiotag);
+            }
+        }
+        $('#delete_album').click(function (e) {
+            confirmModel('Bạn thực sự muốn xóa?', function (result) {
+                if (result) {
+                    var id = $(e.target).attr('data-id');
+
+                    $.post('/album/delete', {id: id}, function (data) {
+                        if (data.status === 'ok') {
+                            window.location = '/album/list';
+                        } else {
+                            alertModel(data.error.msg, BootstrapDialog.TYPE_WARNING);
+                        }
+                    });
+                }
+            });
+        });
+
+        $('#change_status').change(function () {
+            var id = $(this).attr('data-id');
+            var status = $(this).prop('checked');
+
+            $.post('/album/change_status', {id: id, status: status}, function (data) {
+                if (data.status !== 'ok') {
+                    alertModel(data.error.msg, BootstrapDialog.TYPE_WARNING);
+                }
+            });
+        });
+
+        var buttonSearchElem = $('#search');
+        var inputKeywordElm = $('#keyword');
+        var searchTypeElm = $('#stype');
+        var usersearchElm = $('#userid');
+        var searchResultElm = $('#search_result');
+        var albumResultElem = $('#album_result');
+
+        keySubmit(inputKeywordElm, buttonSearchElem);
+
+        var addSong = function (item) {
+            var keyElms = albumResultElem.children('.list-group-item').find('.keys');
+
+            var keys = [];
+
+            keyElms.each(function () {
+                keys.push($(this).val());
+            });
+
+            /*var keyExists = $.grep(keys, function (key) {
+             return item.key === key;
+             });
+             
+             if (keyExists.length > 0) {
+             return;
+             }*/
+
+            var count = albumResultElem.children('.list-group-item').last().find('.count').attr('data-count');
+
+            if (count !== undefined) {
+                count++;
+            } else {
+                count = 1;
+            }
+
+            var copyright = '';
+
+            if (item.copyright) {
+                copyright = '<span class="fa fa-copyright fa-1" style="color: #dd4b39; margin-right: 3px;"></span>';
+            } else {
+                copyright = geticon(item.tsort);
+            }
+
+            var html = '';
+            html += '<li class="list-group-item">';
+            html += '    <span class="count" data-count="' + count + '">' + count + '</span>';
+            html += '    <div title="' + item.title + ' - ' + item.artists + '" class="title">' + copyright + item.title + '<span> - ' + item.artists + '</span></div>';
+            html += '    <audio key="' + item.key + '" class="audio-album" length="' + item.duration + '" src="' + item.streamUrl + '" preload="none"></audio>';
+            html += '    <i class="fa fa-times-circle remove" aria-hidden="true" data-duration="' + item.duration + '" data-key=' + item.key + ' title="Xóa khỏi album"></i>';
+            html += '    <div class="player-control">';
+            html += '        <i class="fa fa-play-circle-o player-button" aria-hidden="true"></i>';
+            html += '        <span class="player-timer"></span>';
+            html += '        <div class="player-seek-bar">';
+            html += '            <div class="player-play-bar"></div>';
+            html += '        </div>';
+            html += '        <span class="player-duration"></span>';
+            html += '        <div class="kbit">kbit: ' + item.kbit + '</div>';
+            html += '    </div>';
+            html += '    <input class="keys" type="hidden" name="keys[]" value="' + item.key + '" />';
+            if (item.tsort == "4") {
+                html += '    <input class="tubekeys" type="hidden" name="tubekeys[]" value="' + item.skey + '" />';
+            }
+            html += '</li>';
+
+            albumResultElem.append(html);
+            addTotalDuration(item.duration);
+            onPlayer();
+            ontubePlayer();
+
+            onRemoveSong(item);
+        };
+
+        var onRemoveSong = function (item) {
+            if (item === undefined) {
+                albumResultElem.find('.remove').on('click', function () {
+                    updateTotalDuration($(this).data().duration);
+                    $(this).parent().remove();
+                    reorder();
+                });
+
+                return;
+            }
+
+            albumResultElem.find('.remove').on('click', function () {
+                var key = item.key;
+                var remove_key = $(this).data().key;
+                if (key === remove_key) {
+                    //console.log("data dura:" + $(this).data().duration);
+                    updateTotalDuration($(this).data().duration);
+                }
+                var keyElmExists = searchResultElm.children('.list-group-item').find('[data-key="' + item.key + '"]');
+
+                if (keyElmExists !== undefined) {
+                    keyElmExists.removeClass('added');
+                    keyElmExists.attr('title', 'Thêm vào album');
+
+                    keyElmExists.on('click', function () {
+                        $(this).off();
+                        $(this).addClass('added');
+                        $(this).attr('title', 'Đã thêm vào album');
+                        addSong(item);
+                    });
+                }
+
+                $(this).parent().remove();
+                reorder();
+            });
+        };
+
+        albumResultElem.sortable({
+            cursor: "move",
+            opacity: 0.9,
+            axis: 'y',
+            deactivate: function () {
+                reorder();
+            }
+        });
+
+        var reorder = function () {
+            var count = 0;
+
+            albumResultElem.find('.count').each(function () {
+                count++;
+                $(this).attr('data-count', count).text(count);
+            });
+        };
+
+        buttonSearchElem.search({
+            placeHolderElm: searchResultElm,
+            inputKeywordElm: inputKeywordElm,
+            inputTypesearchElm: searchTypeElm,
+            inputUsersearchElm: usersearchElm,
+            onAdd: addSong
+        });
+
+        var ontubePlayer = function () {
+            $(".audio-album").tubeplayer({
+                defaultVolume: 1.0,
+                button: '.player-button-youtube',
+                seekBar: '.player-seek-bar',
+                playBar: '.player-play-bar',
+                duration: '.player-duration',
+                timer: '.player-timer',
+                css: {
+                    play: 'fa-play-circle-o',
+                    pause: 'fa-pause-circle-o',
+                    stop: 'fa-stop-circle-o'
+                }
+            });
+        };
+
+        var onPlayer = function () {
+            $(".audio-album").player({
+                defaultVolume: 1.0,
+                button: '.player-button',
+                seekBar: '.player-seek-bar',
+                playBar: '.player-play-bar',
+                duration: '.player-duration',
+                timer: '.player-timer',
+                css: {
+                    play: 'fa-play-circle-o',
+                    pause: 'fa-pause-circle-o',
+                    stop: 'fa-stop-circle-o'
+                }
+            });
+        };
+
+        onPlayer();
+        onRemoveSong();
+
+        searchResultElm.slimScroll({
+            height: '361px',
+            distance: '3px',
+            size: '5px',
+            start: 'top'
+        });
+
+        var isPhoneDevice = "ontouchstart" in document.documentElement;
+
+        if (!isPhoneDevice) {
+            albumResultElem.slimScroll({
+                height: '406px',
+                distance: '3px',
+                size: '5px',
+                start: 'top'
+            });
+        }
+
+        $(':file').jfilestyle({
+            input: false,
+            buttonText: '<span class="glyphicon glyphicon-folder-open"></span>'
+        });
+
+        if ($('#image_album').val().length > 0) {
+            $('#group_image_album').append($('<i class="fa fa-times remove-image" aria-hidden="true"></i>').css('cursor', 'pointer').on('click', function () {
+                $(this).parent().find('img').remove();
+                $('#image_album').val('');
+                $(this).remove();
+            }));
+        }
+
+        $('#file_image').change(function () {
+            var fd = new FormData();
+            fd.append('files', $('#file_image')[0].files[0]);
+            fd.append('token', $('#upload_token').val());
+
+            $.ajax({
+                url: $('#upload_url').val() + '/image?type=album',
+                data: fd,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                xhr: function ()
+                {
+                    var xhr = $.ajaxSettings.xhr();
+                    xhr.upload.addEventListener('progress', function (e) {
+                        if (e.lengthComputable) {
+                            var percentComplete = Math.floor(e.loaded / e.total * 100);
+
+                            console.log(percentComplete + '%');
+                        }
+                    }, false);
+
+                    xhr.addEventListener('progress', function (e) {
+                        if (e.lengthComputable) {
+                            var percentComplete = Math.floor(e.loaded / e.total * 100);
+
+                            console.log(percentComplete + '%');
+                        }
+                    }, false);
+
+                    return xhr;
+                },
+                success: function (data) {
+                    if (data.status === 'ok') {
+                        imageAlbumPreview(data);
+                    } else {
+                        alertModel(data.error.msg, BootstrapDialog.TYPE_WARNING);
+                    }
+                }
+            });
+        });
+        $('#file_upload').change(function () {
+            var fd = new FormData();
+            fd.append('files', $('#file_upload')[0].files[0]);
+            fd.append('token', $('#upload_token').val());
+            var album_id = $("#id").val();
+            $.ajax({
+                url: '/album/upload?album_id=' + album_id,
+                data: fd,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                xhr: function ()
+                {
+                    var xhr = $.ajaxSettings.xhr();
+                    xhr.upload.addEventListener('progress', function (e) {
+                        if (e.lengthComputable) {
+                            var percentComplete = Math.floor(e.loaded / e.total * 100);
+
+                            console.log(percentComplete + '%');
+                        }
+                    }, false);
+
+                    xhr.addEventListener('progress', function (e) {
+                        if (e.lengthComputable) {
+                            var percentComplete = Math.floor(e.loaded / e.total * 100);
+
+                            console.log(percentComplete + '%');
+                        }
+                    }, false);
+
+                    return xhr;
+                },
+                success: function (data) {
+                    if (data.status === 'ok') {
+                        imageAudioPreview(data.keyuiza);
+                    } else {
+                        alertModel(data.error.msg, BootstrapDialog.TYPE_WARNING);
+                    }
+                }
+            });
+        });
+        $('#baseform').bootstrapValidator({
+            excluded: ':disabled',
+            message: 'Dữ liệu nhập không hợp lệ',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                name: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Vui lòng nhập tiêu đề'
+                        },
+                        stringLength: {
+                            min: 3,
+                            max: 100,
+                            message: 'Tiêu đề phải từ 3 đến 100 ký tự'
+                        }
+                    }
+                },
+                desc: {
+                    validators: {
+                        stringLength: {
+                            min: 0,
+                            max: 499,
+                            message: 'Tiêu đề phải từ 10 đến 499 ký tự'
+                        }
+                    }
+                },
+                status: {
+                    validators: {
+                        greaterThan: {
+                            message: 'Vui lòng chọn trạng thái',
+                            value: 1
+                        }
+                    }
+                }
+            }
+        }).on('success.form.bv', function (e) {
+            e.preventDefault();
+
+            var $form = $(e.target);
+
+            $.post(window.location.href, $form.serialize(), function (data) {
+                if (data.status === 'ok') {
+                    alertModel('Lưu thành công.', BootstrapDialog.TYPE_SUCCESS, function () {
+                        //window.location = window.location.href;
+                        window.location = '/album/list';
+                    });
+                } else {
+                    alertModel(data.error.msg, BootstrapDialog.TYPE_WARNING, function () {
+                        $('#baseform').data('bootstrapValidator').resetForm();
+                    });
+                }
+            }, 'json');
+        });
+
+        $('#reset').click(function () {
+            $('#baseform').data('bootstrapValidator').resetForm();
+
+            window.location = window.location.href;
+        });
+
+        $('.popup-add-song').click(function () {
+            var isLoadForm = false;
+
+            BootstrapDialog.show({
+                title: 'Thêm bài hát bằng danh sách key',
+                message: $('<div></div>').load('/album/addSongDialog'),
+                closeByBackdrop: false,
+                closeByKeyboard: false,
+                buttons: [{
+                        label: 'Lưu',
+                        action: function (dialogRef) {
+                            if (isLoadForm === false) {
+                                addSongDialog(dialogRef);
+                                isLoadForm = true;
+                            }
+                        }
+                    }]
+            });
+        });
+
+        var addSongDialog = function (dialogRef) {
+            var keys = $('#keys').val();
+
+            $.post('/album/addSongDialog', {keys: keys}, function (data) {
+                if (data.status === 'ok') {
+                    for (var i in data.data) {
+                        addSong(data.data[i]);
+                    }
+
+                    dialogRef.close();
+                } else {
+                    alertModel(data.error.msg, BootstrapDialog.TYPE_WARNING);
+                }
+            });
+        };
+
+        $('.clear-all-song').click(function () {
+            albumResultElem.empty();
+            $("#totaltime").html(displayDuration(0));
+            $("#totaldur").val(0);
+        });
+
+        $('.popup-copy-song').click(function () {
+            BootstrapDialog.show({
+                title: 'Sao chép danh sách key',
+                message: function () {
+                    var html = $('<textarea id="data-keys" class="form-control" rows="5" id="keys"></textarea>');
+
+                    var keys = '';
+                    $('#album_result > li').each(function () {
+                        keys += $(this).find('input.keys').val() + '\n';
+                    });
+
+                    html.val(keys);
+
+                    return html;
+                },
+                closeByBackdrop: false,
+                closeByKeyboard: false,
+                buttons: [{
+                        id: 'copy-keys',
+                        label: 'Copy',
+                        action: function () {
+                            var inp = $('#data-keys');
+                            if (inp && inp.select) {
+                                inp.select();
+                                try {
+                                    document.execCommand('copy');
+                                    inp.blur();
+                                    $('#copy-keys').addClass('copied');
+                                    setTimeout(function () {
+                                        $('#copy-keys').removeClass('copied');
+                                    }, 2000);
+                                } catch (err) {
+                                    alert('Vui lòng nhấn tổ hợp phím Ctrl+C để copy');
+                                }
+                            }
+                        }
+                    }]
+            });
+        });
+        //////////////////
+        //select2
+        $('.select2').css('width', '200px').select2({allowClear: true})
+        $('#select2-multiple-style .btn').on('click', function (e) {
+            var target = $(this).find('input[type=radio]');
+            var which = parseInt(target.val());
+            if (which == 2)
+                $('.select2').addClass('tag-input-style');
+            else
+                $('.select2').removeClass('tag-input-style');
+        });
+
+        //////////////////
+        $('.multiselect').multiselect({
+            enableFiltering: true,
+            buttonClass: 'btn btn-white btn-primary',
+            templates: {
+                button: '<button type="button" class="multiselect dropdown-toggle" data-toggle="dropdown"></button>',
+                ul: '<ul class="multiselect-container dropdown-menu"></ul>',
+                filter: '<li class="multiselect-item filter"><div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span><input class="form-control multiselect-search" type="text"></div></li>',
+                filterClearBtn: '<span class="input-group-btn"><button class="btn btn-default btn-white btn-grey multiselect-clear-filter" type="button"><i class="fa fa-times-circle red2"></i></button></span>',
+                li: '<li><a href="javascript:void(0);"><label></label></a></li>',
+                divider: '<li class="multiselect-item divider"></li>',
+                liGroup: '<li class="multiselect-item group"><label class="multiselect-group"></label></li>'
+            }
+        });
+        //chosen
+        $('.chosen-select').chosen({
+            allow_single_deselect: true,
+            enableFiltering: true,
+            max_selected_options: 10,
+            buttonClass: 'btn btn-white btn-primary',
+
+        });
+        $(window)
+                .off('resize.chosen')
+                .on('resize.chosen', function () {
+                    $('.chosen-select').each(function () {
+                        var $this = $(this);
+                        $this.next().css({'width': '210px'});
+                    })
+                }).trigger('resize.chosen');
+        //resize chosen on sidebar collapse/expand
+        $(document).on('settings.ace.chosen', function (e, event_name, event_val) {
+            if (event_name != 'sidebar_collapsed')
+                return;
+            $('.chosen-select').each(function () {
+                var $this = $(this);
+                $this.next().css({'width': '210px'});//$this.parent().width()/2
+            })
+        });
+
+
+        $('#chosen-multiple-style .btn').on('click', function (e) {
+            var target = $(this).find('input[type=radio]');
+            var which = parseInt(target.val());
+            if (which == 2)
+                $('#form-field-select-4').addClass('tag-input-style');
+            else
+                $('#form-field-select-4').removeClass('tag-input-style');
+        });
+
+        $('#chosen-multiple-style .btn').on('click', function (e) {
+            var target = $(this).find('input[type=radio]');
+            var which = parseInt(target.val());
+            if (which == 2)
+                $('#form-field-select-4').addClass('tag-input-style');
+            else
+                $('#form-field-select-4').removeClass('tag-input-style');
+        });
+        $(this).find('.chosen-container').each(function () {
+            $(this).find('a:first-child').css('width', '210px');
+            $(this).find('.chosen-drop').css('width', '210px');
+            $(this).find('.chosen-search input').css('width', '200px');
+            $(this).find('.default').css('width', '120px');
+        });
+        //in ajax mode, remove remaining elements before leaving page
+        $(document).one('ajaxloadstart.page', function (e) {
+            $('[class*=select2]').remove();
+            $('.multiselect').multiselect('destroy');
+        });
+
+    }
+    // </editor-fold>
+
+    var imageAlbumPreview = function (data) {
+        var src = data.static_url + '/' + data.filename;
+
+        var img = $('<img src="' + src + '" />');
+        img.css('width', '100px');
+
+        var groupElm = $('#group_image_album');
+        var albumElm = $('#image_album');
+
+        groupElm.find('.remove-image').remove();
+
+        groupElm.find('img').remove();
+        groupElm.append(img);
+        groupElm.append($('<i class="fa fa-times remove-image" aria-hidden="true"></i>').css('cursor', 'pointer').on('click', function () {
+            $(this).parent().find('img').remove();
+            albumElm.val('');
+            $(this).remove();
+        }));
+        albumElm.val(data.filename);
+    };
+    var imageAudioPreview = function (preview) {
+        var hduiza = $('#hduiza').val();
+        if (hduiza == 1) {
+            console.log('preview:' + preview);
+            $('#preview').val(preview);
+            $("#divaudiopreview").html("");
+            var progress = '<div class="progress" style="margin-bottom:5px;">';
+            progress += '<div class="progress-bar progress-bar-striped" role="progressbar" ';
+            progress += 'style="width: 100%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div></div>';
+            progress += '<span>File đang xử lý</span>';
+            $("#divaudiopreview").html(progress);
+        } else {
+            console.log('call vps:' + hduiza);
+            $('#preview').val(preview);
+            var stream_url = $('#sky_cdn_url').val() + '/' + preview;
+            var audiotag = '<audio controls autoplay><source src="' + stream_url + '" type="audio/ogg"></audio>';
+            $("#divaudiopreview").html(audiotag);
+        }
+
+    };
+    var displayDuration = function (totalSeconds) {
+        /*var seconds = ('0' + totalSeconds % 60).slice(-2);
+         var totalMinutes = Math.floor(totalSeconds/60);
+         var minutes = ('0' + totalMinutes % 60).slice(-2);
+         var totalHours = Math.floor(totalMinutes/60);
+         var hours = ('0' + (totalHours) % 24).slice(-2);
+         var timeDisplay = hours + "h:" + minutes + "m:" + seconds + "s";*/
+        var sec_num = parseInt(totalSeconds, 10);
+        var hours = Math.floor(sec_num / 3600);
+        var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+        var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+        if (hours < 10) {
+            hours = '0' + hours;
+        }
+        if (minutes < 10) {
+            minutes = '0' + minutes;
+        }
+        if (seconds < 10) {
+            seconds = '0' + seconds;
+        }
+        var timeDisplay = hours + "h:" + minutes + "m:" + seconds + "s";
+        return timeDisplay;
+    };
+    var updateTotalDuration = function (duration) {
+        //console.log(duration);
+        if (typeof duration === 'undefined') {
+            return;
+        }
+        duration = Number(duration);
+        var totaldur = Number($("#totaldur").val());
+        $("#totaltime").html(displayDuration(totaldur - duration));
+        $("#totaldur").val(totaldur - duration);
+        //console.log($("#totaldur").val());
+    };
+    var addTotalDuration = function (duration) {
+        var totaldur = Number($("#totaldur").val());
+        $("#totaltime").html(displayDuration(totaldur + duration));
+        $("#totaldur").val(totaldur + duration);
+        //console.log($("#totaldur").val());
+    };
+
+    var geticon = function (tsort) {
+        var icon = "";
+        if (tsort == "1")
+            icon = '<span class="fa fa-copyright fa-1" style="color: #dd4b39; margin-right: 3px;"></span>';
+        else if (tsort == "2")
+            icon = '<span class="fa fa-upload" style="color: #dd4b39; margin-right: 3px;"></span>';
+        else if (tsort == "4")
+            icon = '<span class="fa fa-youtube-play" style="font-size:14px;color:red;margin-right: 3px;"></span>';
+        return icon;
+    };
+});
+
