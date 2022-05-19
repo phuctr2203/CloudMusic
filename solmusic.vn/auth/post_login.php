@@ -22,7 +22,7 @@
                 
                 echo '<script>
                     alert("Login successfully!");
-                    window.location.href = "../home/personal_account.php";
+                    window.location.href = "../admin_database/audio_beat.php";
                 </script>';
             }
             elseif ($user['email'] == $email && password_verify($password, $user['password'])){ 
@@ -35,7 +35,7 @@
                 $_SESSION['password'] = $user['password'];
                 
                 echo '<script>
-                    window.location.href = "../home/v2.php";
+                    window.location.href = "../home/personal_account.php";
                 </script>';
             }
             

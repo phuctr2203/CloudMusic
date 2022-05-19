@@ -7,5 +7,5 @@
     unset($_SESSION['gender']);
     echo '<script>
         alert("Logout successfully !");
-        window.location.href = "login.php";
+        window.location.href = "../home/v1.php";
     </script>';

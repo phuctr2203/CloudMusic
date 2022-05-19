@@ -33,20 +33,24 @@
     <form id="baseform" method="post" role="form">
         <div class="wrapper">
             <header class="main-header">
-                <a href="../home/v1.php" class="logo">
+                <a href="../home/v2.php" class="logo">
                     <img style="width:180px!important;" class="main-logo" src="../assets/images/logo.png" alt="">
                 </a>
                 <nav class="navbar navbar-static-top" role="navigation">
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
-                        <li class="active"><a href="v1.php">Home</a></li>
-                        <li><a href="#" class="contactsky">Contact</a></li>
+                        <li class="active"><a href="v2.php">Home</a></li>
+                        
                         <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                             Hello, <?= $_SESSION['name'] ?>
                         </a>
                         <div class="dropdown-menu" style="padding-left:10px;">
-                        <p><a class="dropdown-item" href="profile.php">Profile</a></p>
+                        <?php if($_SESSION['email'] == "admin@gmail.com"):?>
+                                    <p><a class="dropdown-item fa fa-user" aria-hidden="true" href="../home/admin_profile.php">Profile</a></p>
+                                <?php else: ?>
+                                    <p><a class="dropdown-item fa fa-user" aria-hidden="true" href="../home/profile.php">Profile</a></p>
+                                <?php endif; ?>
                         <p><a class="dropdown-item" href="../auth/logout.php">Logout</a></p>
                         </div>
                         </li>
@@ -60,7 +64,7 @@
                         <li class="header">Navigation</li>
                         <li class="treeview active">
                             <ul class="treeview-menu menu-open" style="display: block;">
-                                <li><a href="./personal_account.html">Playlist</a></li>
+                                <li><a href="./personal_account.php">Playlist</a></li>
                                 <li><a href="./create_playlist.html">Create Playlist</a></li>
                             </ul>
                         </li>
@@ -71,7 +75,7 @@
                 <section class="content-header">
                     <h1>CloudMusic Station<small>Playlist</small></h1>
                     <ol class="breadcrumb">
-                        <li><a href="../home/v1.php"> Home</a></li>
+                        <li><a href="../home/v2.php"> Home</a></li>
                         <li class="active">CloudMusic Station</li>
                     </ol>
                 </section>

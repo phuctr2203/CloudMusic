@@ -64,6 +64,11 @@ session_start();
                 <div class="collapse navbar-collapse navbar-ex1-collapse" id="navbar-muziq">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active"><a href="v1.php">Home</a></li>
+                        <?php if ($_SESSION['email'] = "admin@gmail.com"): ?>
+                            <li><a href="../admin_database/audio_beat.php">Playlist</a></li>
+                        <?php else: ?>
+                            <li><a href="../home/personal_account.php">Playlist</a></li>
+                        <?php endif; ?>
                         <li><a href="#" class="contactsky">Contact</a></li>
                         <?php if (!isset($_SESSION['user_id'])): ?>
                         <li><a href="../auth/login.php">Login</a></li>
@@ -74,7 +79,11 @@ session_start();
                             Hello, <?= $_SESSION['name'] ?>
                             </a>
                             <div class="dropdown-menu" style="padding-left:10px;">
-                                <p><a class="dropdown-item" href="profile.php">Profile</a></p>
+                            <?php if($_SESSION['email'] == "admin@gmail.com"):?>
+                                <p><a class="dropdown-item" href="../home/admin_profile.php">Profile</a></p>
+                            <?php else: ?>
+                                <p><a class="dropdown-item" href="../home/profile.php">Profile</a></p>
+                            <?php endif; ?>
                                 
                                 <p><a class="dropdown-item" href="../auth/logout.php">Logout</a></p>
                             </div>
@@ -397,7 +406,12 @@ session_start();
                                 </div>
 
                                 <div class="group">
-                                    <input class="btn_contact" id="contact-popup" type="submit" name="submit" value="Submit">
+                                <input class="btn_contact" id="contact-popup" type="submit" name="submit" value="Submit" onclick="myFunction()"></input>
+                                  <script>
+                                  function myFunction() {
+                                    alert("Thank you for contacting us! We will reply soon!");
+                                  }
+                                  </script>
                                 </div>
 
                             </form>

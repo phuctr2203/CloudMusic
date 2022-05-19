@@ -63,18 +63,28 @@
       <div class="collapse navbar-collapse navbar-ex1-collapse" id="navbar-muziq">
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="v2.php">Home</a></li>
-          <li><a href="#anchor03">Playlist</a></li>
-          <li><a href="#" class="contactsky">Contact</a></li>
+          
+          <?php if ($_SESSION['email'] = "admin@gmail.com"): ?>
+              <li><a href="../admin_database/audio_beat.php">Playlist</a></li>
+          <?php else: ?>
+              <li><a href="../home/personal_account.php">Playlist</a></li>
+          <?php endif; ?>
+
+          <li><a href="" class="contactsky">Contact</a></li>
           <?php if (!isset($_SESSION['user_id'])): ?>
             <li><a href="../auth/login.php">Login</a></li>
-            <li><a href="#" class="createpl">Sign Up</a></li>
+            <li><a href="" class="createpl">Sign Up</a></li>
           <?php else: ?>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                 Hello, <?= $_SESSION['name'] ?>
               </a>
               <div class="dropdown-menu" style="padding-left:10px;">
-                <p><a class="dropdown-item" href="profile.php">Profile</a></p>
+              <?php if($_SESSION['email'] == "admin@gmail.com"):?>
+                  <p><a class="dropdown-item" href="../home/admin_profile.php">Profile</a></p>
+              <?php else: ?>
+                  <p><a class="dropdown-item" href="../home/profile.php">Profile</a></p>
+              <?php endif; ?>
                 
                 <p><a class="dropdown-item" href="../auth/logout.php">Logout</a></p>
               </div>
@@ -231,7 +241,7 @@
             <div class="cover">
               <img src="../../img.solmusic.vn/xmusicstation/album/V-Pop In October, 2021.png"  alt="">
             </div>
-            <p class="album album-list">V-Pop in October, 2021</p>
+            <p class="album album-list">V-Pop in May, 2022</p>
             <p class="artist"></p>
             <div class="voffset20"></div>
             <p class="buyalbum">
@@ -707,7 +717,7 @@
                       <a href="vpop_accoustic.html"><i class="plus"></i></a>
                       </div>
                     </div>
-                    <a href="vpop_accounstic.html"><p class="album">V-Pop Acoustic in October, 2021</p></a>
+                    <a href="vpop_accounstic.html"><p class="album">V-Pop Acoustic in May, 2022</p></a>
                     <p class="artist"></p>
                   </div>
                 </div>
@@ -719,7 +729,7 @@
                       <a href="usuk_accoustic.html"><i class="plus"></i></a>
                       </div>
                     </div>
-                    <a href="usuk_accoustic.html"><p class="album">USUK Acoustic in October, 2021</p></a>
+                    <a href="usuk_accoustic.html"><p class="album">USUK Acoustic in May, 2022</p></a>
                     <p class="artist"></p>
                   </div>
                 </div>
@@ -731,7 +741,7 @@
                       <a href="usuk.html"><i class="plus"></i></a>
                       </div>
                     </div>
-                    <a href="usuk.html"><p class="album">USUK in October, 2021</p></a>
+                    <a href="usuk.html"><p class="album">USUK in May, 2022</p></a>
                     <p class="artist"></p>
                   </div>
                 </div>
@@ -743,7 +753,7 @@
                       <a href="vpop.html"><i class="plus"></i></a>
                       </div>
                     </div>
-                    <a href="vpop.html"><p class="album">V-Pop in October, 2021</p></a>
+                    <a href="vpop.html"><p class="album">V-Pop in May, 2022</p></a>
                     <p class="artist"></p>
                   </div>
                 </div>
@@ -854,44 +864,44 @@
         <div class="voffset50"></div>
         <div class="thumbnails">
           <div class="thumbnail image">
-            <a href="#" class="swipebox"> <!-- data-fancybox-type="iframe" -->
+            
               <img src="../../img.solmusic.vn/xmusicstation/home/images/barber.png" alt="">
-            </a>
+         
           </div>
           <div class="thumbnail image">
-            <a href="#" class="swipebox">
+          
               <img src="../../img.solmusic.vn/xmusicstation/home/images/bars_pubs.png" alt="">
-            </a>
+        
           </div>
           <div class="thumbnail image">
-            <a href="#" class="swipebox">
+           
               <img src="../../img.solmusic.vn/xmusicstation/home/images/coffeshops.png" alt="">
-            </a>
+         
           </div>
           <div class="thumbnail image">
-            <a href="#" class="swipebox">
+        
               <img src="../../img.solmusic.vn/xmusicstation/home/images/restaurent_bistro.png" alt="">
-            </a>
+           
           </div>
           <div class="thumbnail image">
-            <a href="#" class="swipebox">
+      
               <img src="../../img.solmusic.vn/xmusicstation/home/images/cinema.png" alt="">
-            </a>
+    
           </div>
          <div class="thumbnail image">
-            <a href="#" class="swipebox">
+   
               <img src="../../img.solmusic.vn/xmusicstation/home/images/gyms.png" alt="">
-            </a>
+     
           </div>
          <div class="thumbnail image">
-            <a href="#" class="swipebox">
+    
               <img src="../../img.solmusic.vn/xmusicstation/home/images/retail_market.png" alt="">
-            </a>
+    
             </div>
             <div class="thumbnail image">
-            <a href="#" class="swipebox">
+      
               <img src="../../img.solmusic.vn/xmusicstation/home/images/personaluse.png" alt="">
-            </a>
+          
           </div>
         </div>
         <div class="voffset50"></div>
@@ -1025,7 +1035,12 @@
                             </div>
                             
                             <div class="group">
-                                <input class="btn_contact" id="contact-popup" type="submit" name="submit" value="Submit">
+                                <input class="btn_contact" id="contact-popup" type="submit" name="submit" value="Submit" onclick="myFunction()"></input>
+                                  <script>
+                                  function myFunction() {
+                                    alert("Thank you for contacting us! We will reply soon!");
+                                  }
+                                  </script>
                             </div>
                             
                         </form>
@@ -1041,7 +1056,7 @@
                     <div class="text">Free to use<br><br>UP TO 7 DAYS</div>
                 </div>
                 <div class="info_regist">
-                    <span class="close"></span>
+                    <span class="close" onclick="document.location='v2.php'"></span>
                     <div class="head">Sign up for a trial</div>
                     <div class="children">Use copyrighted music the right way</div>
                     <div class="regist_form">

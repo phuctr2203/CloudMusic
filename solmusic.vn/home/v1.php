@@ -37,15 +37,15 @@
         <script src="https://kit.fontawesome.com/d7b1e20284.js" crossorigin="anonymous"></script>
         
     </head>
-    <body data-spy="scroll" data-target="#navbar-muziq" data-offset="80">
-        <!-- LOADER -->
-        <div id="mask">
-          <div class="spinner">
-            <div class="bounce1"></div>
-            <div class="bounce2"></div>
-            <div class="bounce3"></div>
-          </div>
-        </div>
+<body data-spy="scroll" data-target="#navbar-muziq" data-offset="80">
+  <!-- LOADER -->
+  <div id="mask">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </div>
         
 <!-- HEADER -->
   <header id="jHeader">
@@ -62,11 +62,11 @@
 
       <div class="collapse navbar-collapse navbar-ex1-collapse" id="navbar-muziq">
         <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="#">Home</a></li>
+          <li class="active"><a href="">Home</a></li>
           <li><a href="#anchor03">Playlist</a></li>
-          <li><a href="#" class="contactsky">Contact</a></li>
+          <li><a href="" class="contactsky">Contact</a></li>
           <li><a href="../auth/login.php">Login</a></li>
-          <li><a href="#" class="createpl">Sign Up</a></li>
+          <li><a href="" class="createpl">Sign Up</a></li>
         </ul>
       </div>
     </nav>
@@ -146,7 +146,6 @@
       <div class="player-content">
         <audio preload></audio>
         <ol class="playlist">
-            <li><a href="#" data-src="https://aredir.nixcdn.com/NhacCuaTui978/GuiDiuDangGuiThanhXuan-BaoTram-5902822_hq.mp3?st=252Aw0gYpGaWAF28gxLMhA&amp;e=1637823354">Gửi Dịu Dàng, Gửi Thanh Xuân</a></li>
             <li><a href="#" data-src="https://aredir.nixcdn.com/NhacCuaTui976/MuonRuouToTinh-EmilyBigDaddy-5871420_hq.mp3?st=JNDCXrzIM8kwRZkqH_tT9A&amp;e=1637823354">Mượn Rượu Tỏ Tình</a></li>
             <li><a href="#" data-src="https://aredir.nixcdn.com/Sony_Audio57/ThuongEmLaDieuAnhKhongTheNgo-NooPhuocThinh-5827347_hq.mp3?st=bz5YFGCHlxLHlQnTMoSgFQ&amp;e=1637823354">Thương Em Là Điều Anh Không Thể Ngờ</a></li>
             <li><a href="#" data-src="https://aredir.nixcdn.com/NhacCuaTui968/LoYeuEmRoiBaoGioHetEOst-SMELOD-5663543_hq.mp3?st=QKFO_JxiPe333GVd3T08WA&amp;e=1637823354">Lỡ Yêu Em Rồi (Bao Giờ Hết Ế OST)</a></li>
@@ -218,7 +217,7 @@
             <div class="cover">
               <img src="../../img.solmusic.vn/xmusicstation/album/V-Pop In October, 2021.png"  alt="">
             </div>
-            <p class="album album-list">V-Pop in October, 2021</p>
+            <p class="album album-list">V-Pop in May, 2022</p>
             <p class="artist"></p>
             <div class="voffset20"></div>
             <p class="buyalbum">
@@ -694,7 +693,7 @@
                       <a href="vpop_accoustic.php"><i class="plus"></i></a>
                       </div>
                     </div>
-                    <a href="vpop_accoustic.php"><p class="album">V-Pop Acoustic in October, 2021</p></a>
+                    <a href="vpop_accoustic.php"><p class="album">V-Pop Acoustic in May, 2022</p></a>
                     <p class="artist"></p>
                   </div>
                 </div>
@@ -706,7 +705,7 @@
                       <a href="usuk_accoustic.php"><i class="plus"></i></a>
                       </div>
                     </div>
-                    <a href="usuk_accoustic.php"><p class="album">USUK Acoustic in October, 2021</p></a>
+                    <a href="usuk_accoustic.php"><p class="album">USUK Acoustic in May, 2022</p></a>
                     <p class="artist"></p>
                   </div>
                 </div>
@@ -718,7 +717,7 @@
                       <a href="usuk.php"><i class="plus"></i></a>
                       </div>
                     </div>
-                    <a href="usuk.php"><p class="album">USUK in October, 2021</p></a>
+                    <a href="usuk.php"><p class="album">USUK in May, 2022</p></a>
                     <p class="artist"></p>
                   </div>
                 </div>
@@ -730,7 +729,7 @@
                       <a href="vpop.php"><i class="plus"></i></a>
                       </div>
                     </div>
-                    <a href="vpop.php"><p class="album">V-Pop in October, 2021</p></a>
+                    <a href="vpop.php"><p class="album">V-Pop in May, 2022</p></a>
                     <p class="artist"></p>
                   </div>
                 </div>
@@ -841,44 +840,28 @@
         <div class="voffset50"></div>
         <div class="thumbnails">
           <div class="thumbnail image">
-            <a href="#" class="swipebox"> <!-- data-fancybox-type="iframe" -->
               <img src="../../img.solmusic.vn/xmusicstation/home/images/barber.png" alt="">
-            </a>
           </div>
           <div class="thumbnail image">
-            <a href="#" class="swipebox">
               <img src="../../img.solmusic.vn/xmusicstation/home/images/bars_pubs.png" alt="">
-            </a>
           </div>
           <div class="thumbnail image">
-            <a href="#" class="swipebox">
               <img src="../../img.solmusic.vn/xmusicstation/home/images/coffeshops.png" alt="">
-            </a>
           </div>
           <div class="thumbnail image">
-            <a href="#" class="swipebox">
               <img src="../../img.solmusic.vn/xmusicstation/home/images/restaurent_bistro.png" alt="">
-            </a>
           </div>
           <div class="thumbnail image">
-            <a href="#" class="swipebox">
               <img src="../../img.solmusic.vn/xmusicstation/home/images/cinema.png" alt="">
-            </a>
           </div>
          <div class="thumbnail image">
-            <a href="#" class="swipebox">
               <img src="../../img.solmusic.vn/xmusicstation/home/images/gyms.png" alt="">
-            </a>
           </div>
          <div class="thumbnail image">
-            <a href="#" class="swipebox">
               <img src="../../img.solmusic.vn/xmusicstation/home/images/retail_market.png" alt="">
-            </a>
             </div>
             <div class="thumbnail image">
-            <a href="#" class="swipebox">
               <img src="../../img.solmusic.vn/xmusicstation/home/images/personaluse.png" alt="">
-            </a>
           </div>
         </div>
         <div class="voffset50"></div>
@@ -1011,7 +994,12 @@
                             </div>
                           
                             <div class="group">
-                                <input class="btn_contact" id="contact-popup" type="submit" name="submit" value="Submit">
+                                <input class="btn_contact" id="contact-popup" type="submit" name="submit" value="Submit" onclick="myFunction()"></input>
+                                  <script>
+                                  function myFunction() {
+                                    alert("Thank you for contacting us! We will reply soon!");
+                                  }
+                                  </script>
                             </div>
                             
                         </form>
@@ -1020,14 +1008,14 @@
             </div>
         </div>
         </form>
-        <form method="post" action="../auth/post_register.php">
+<form method="post" action="../auth/post_register.php">
           <div id="box_popup_regist">
               <div class="box_regist">
                   <div class="bg">
                       <div class="text">Free to use<br><br>UP TO 7 DAYS</div>
                   </div>
                   <div class="info_regist">
-                      <span class="close"></span>
+                      <span class="close" onclick="document.location='v1.php'"></span>
                       <div class="head">Sign up for a trial</div>
                       <div class="children">Use copyrighted music the right way</div>
                       <div class="regist_form">
