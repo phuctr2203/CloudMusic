@@ -63,6 +63,7 @@ session_start();
     <div class="collapse navbar-collapse navbar-ex1-collapse" id="navbar-muziq">
     <ul class="nav navbar-nav navbar-right">
         <li class="active"><a href="v2.php">Home</a></li>
+        <li><a href="#anchor03">Playlist</a></li>
         <li><a href="#" class="contactsky">Contact</a></li>
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
