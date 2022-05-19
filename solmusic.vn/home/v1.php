@@ -1008,13 +1008,7 @@
                                 <span class="input-group-addon"><i class="fas fa-user-edit" aria-hidden="true"></i></span>
                                 <textarea class="textarea" name="message" placeholder="What You Looking For?"></textarea>
                             </div>
-                            
-                            <div class="group">
-                                <span class="input-group-addon"><i class="fa fa-qrcode" aria-hidden="true"></i></span>
-                                <input class="capchar" type="text" name="captcha" placeholder="Input Code">
-                                <img class="txt_capcha" src="http://quanly.xms.vn/ajax/captcha" />
-                                <img class="reload_captcha" src="../../img.solmusic.vn/xmusicstation/home/images/icon-reload.png" />
-                            </div>
+                          
                             <div class="group">
                                 <input class="btn_contact" id="contact-popup" type="submit" name="submit" value="Submit">
                             </div>
@@ -1025,7 +1019,7 @@
             </div>
         </div>
         </form>
-        <form method="post" action="../auth/post_register.php">
+        <form id="form_popup_regist" method="post" action="../auth/post_register.php">
           <div id="box_popup_regist">
               <div class="box_regist">
                   <div class="bg">

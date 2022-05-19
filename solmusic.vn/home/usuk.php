@@ -397,12 +397,6 @@ session_start();
                             </div>
 
                             <div class="group">
-                                <span class="input-group-addon"><i class="fa fa-qrcode" aria-hidden="true"></i></span>
-                                <input class="capchar" type="text" name="captcha" placeholder="Input Code">
-                                <img class="txt_capcha" src="http://quanly.xms.vn/ajax/captcha" />
-                                <img class="reload_captcha" src="../../img.solmusic.vn/xmusicstation/home/images/icon-reload.png" />
-                            </div>
-                            <div class="group">
                                 <input class="btn_contact" id="contact-popup" type="submit" name="submit" value="Submit">
                             </div>
 
