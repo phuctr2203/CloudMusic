@@ -640,7 +640,7 @@
   </section>
 
   <!-- STAY IN TOUCH -->
-  <section class="section stay-in-touch inverse-color parallax-section" data-parallax-image="http://img.xms.vn/xmusicstation/home/images/khonhacbq.png" id="anchor02">
+  <section class="section stay-in-touch inverse-color parallax-section" data-parallax-image="../assets/khonhacbq.png" id="anchor02">
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-md-6">
@@ -1072,7 +1072,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="container">
-    <p class="copy"><i class="far fa-copyright"></i> 2021. SolMusic</p><br>
+    <p class="copy"><i class="far fa-copyright"></i> 2022. CloudMusic</p><br>
     <p class="copy"><i class="fas fa-laptop-code"></i> Sponsor by CISH</p>
     
   </div>

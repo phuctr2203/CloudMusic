@@ -6,8 +6,8 @@
 <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <link rel="icon" type="image/png" href="../assets/img/icon-title.png" />
-        <title>XMusic Station Merchant Tool</title>   
+        <link rel="icon" type="image/png" href="../assets/images/icon-title.png" />
+        <title>CloudMusic Station Merchant Tool</title>   
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />    
         <link href="../assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />    
         <link href="../assets/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css" />    

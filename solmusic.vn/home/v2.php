@@ -12,7 +12,7 @@
         <meta name="MobileOptimized" content="320">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
         <link rel="icon" type="image/png" href="../assets/img/icon-title.png" />
-        <title>SolMusic Station Merchant Tool</title>
+        <title>CloudMusic Station Merchant Tool</title>
         <link href="../assets/font-google/css/font-google-home.css" rel="stylesheet" type="text/css" />
         <link href="../assets/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css" /> 
         <link href="../assets/css/vendor/bootstrap.css" rel="stylesheet" type="text/css" />    
