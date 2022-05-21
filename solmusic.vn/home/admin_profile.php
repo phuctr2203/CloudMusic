@@ -224,27 +224,27 @@ session_start();
                                     <div class="col-md-12">
                                         <div class="row">
                                             <div class="col-md-12 form-group">
-                                                <label class="control-label col-md-2 text-right">Full Name:</label>
+                                                <label class="control-label col-md-2 text-right">Name:</label>
                                                 <div class="col-md-8">
-                                                    <label class="control-label">Bình Nguyễn</label>
+                                                    <label class="control-label"><?= $_SESSION['name'] ?></label>
                                                 </div>
                                             </div>
                                             <div class="col-md-12 form-group">
                                                 <label class="control-label col-md-2 text-right">Email:</label>
                                                 <div class="col-md-8">
-                                                    <label class="control-label">cloudmusic@gmail.com</label>
+                                                    <label class="control-label"><?= $_SESSION['email'] ?></label>
                                                 </div>
                                             </div>
                                             <div class="col-md-12 form-group">
                                                 <label class="control-label col-md-2 text-right">Phone Number:</label>
                                                 <div class="col-md-8">
-                                                    <label class="control-label">096868686</label>
+                                                    <label class="control-label"><?= $_SESSION['phone'] ?></label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="top-Nag">
-                                        <input type="submit" value="Change Password" class="btn btn-success" onclick="sendSaveData()" style="margin-right:10px;" id="btnSubmitUpdatePassAdmin">
+                                        <input type="submit" value="Change Password" class="btn btn-success" onclick="document.location='../auth/changepwd.php'" style="margin-right:10px;" id="btnSubmitUpdatePassAdmin">
                                         <input type="hidden" id="username" name="username" value="">
                                         <br class="clr">
                                     </div>

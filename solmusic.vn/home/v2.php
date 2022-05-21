@@ -64,7 +64,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="v2.php">Home</a></li>
           
-          <?php if ($_SESSION['email'] = "admin@gmail.com"): ?>
+          <?php if ($_SESSION['email'] == "admin@gmail.com"): ?>
               <li><a href="../admin_database/audio_beat.php">Playlist</a></li>
           <?php else: ?>
               <li><a href="../home/personal_account.php">Playlist</a></li>
