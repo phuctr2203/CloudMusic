@@ -14,5 +14,13 @@ Functionality: <br />
 - Playlist search: customers can search for their suitable playlist, by genre, artists, or albums. <br />
 - Add playlists: customers can add tracks to their playlists <br />
 - Manage tracks: artists can manage their music tracks and playlists on our database and receive monthly reports on the use of their songs. <br />
-- Earning: artists can earn their income automatically monthly by providing their payment account. 
+- Earning: artists can earn their income automatically monthly by providing their payment account. <br />
+
+<h2>3/ Software Architecture</h2>
+<img src="Diagrams/software_architecture.png"> <br />
+
+<h2>4/ Activity Diagram</h2>
+<img src="Diagrams/activity_diagram.png">
+
+
 
