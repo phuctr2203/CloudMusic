@@ -11,8 +11,8 @@ Businesses and organizations must use legal music following copyright law, inclu
 <h2>2/ Notable Product Properties</h2>
 ####Unordered list (*)
 Functionality: 
-* User Login/Sign Up: customers can use our website freely, but they can sign up for more functions such as searching and using music playlists. 
-* Playlist search: customers can search for their suitable playlist, by genre, artists, or albums. 
+- User Login/Sign Up: customers can use our website freely, but they can sign up for more functions such as searching and using music playlists. 
+- Playlist search: customers can search for their suitable playlist, by genre, artists, or albums. 
 •	Generate random playlists: customers can create random playlists daily with their desired music style. 
 •	Manage tracks: artists can manage their music tracks and playlists on our database and receive monthly reports on the use of their songs. 
 •	Earning: artists can earn their income automatically monthly by providing their payment account. 
