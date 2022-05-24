@@ -2,7 +2,7 @@
     session_start();
 ?>
 <!DOCTYPE html>
-<!-- saved from url=(0030)http://admin.xms.vn/album/list -->
+
 <html lang="en">
 
 <head>
@@ -28,6 +28,7 @@
     <link href="./assets/select2.css" rel="stylesheet" type="text/css">
 
 </head>
+
 
 <body class="skin-green-light sidebar-mini" data-new-gr-c-s-check-loaded="14.1013.0" data-gr-ext-installed="">
     <form id="baseform" method="post" role="form">
@@ -64,8 +65,10 @@
                         <li class="header">Navigation</li>
                         <li class="treeview active">
                             <ul class="treeview-menu menu-open" style="display: block;">
-                                <li><a href="./personal_account.php">Playlist</a></li>
-                                <li><a href="./create_playlist.html">Create Playlist</a></li>
+                                <li><a href="./personal_account.php">Playlist Home</a></li>
+                                <li><a href="./my_playlist.php">My Playlist</a></li>
+                                <li><a href="./search.php">Search Artist</a></li> <!-- NEW -->
+                                <li><a href="./sort_alphabet.php">Search Alphabet</a></li> <!-- new-->
                             </ul>
                         </li>
                     </ul>
@@ -85,26 +88,16 @@
                         <div class="col-lg-12">
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label class="control-label">Find Playlist</label>
-                                    <input id="keyword" type="text" class="form-control" placeholder="Keyword" value="">
                                 </div>
                             </div>
                             <div class="col-sm-2">
                                 <div class="form-group">
-                                    <label class="control-label">Status</label>
-                                    <select id="status" name="status" class="form-control">      
-    <option value="0" selected="selected">All Status</option>
-    <option value="1">ENABLE</option>
-    <option value="2">DISABLE</option>
 </select>
                                 </div>
                             </div>
                             <div class="col-sm-2">
                                 <div class="form-group">
                                     <label class="control-label ln"></label>
-                                    <button id="search" class="form-control btn btn-primary" type="button">
-                                <span>Search</span>
-                            </button>
                                 </div>
                             </div>
                         </div>
