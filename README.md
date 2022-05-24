@@ -1,7 +1,7 @@
 <h1>Welcome to CloudMusic!</h1><br />
 
 This is a group project that I made with my team at RMIT University. <br />
-Link: https://cloudmusic68.herokuapp.com/solmusic.vn/home/v1.php<br />
+Link: https://cloudmusic68.herokuapp.com/solmusic.vn/home/v1.php<br /><br />
 
 <h2>1/ Product description</h2>
 
