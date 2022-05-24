@@ -3,12 +3,12 @@
 This is a group project that I made with my team at RMIT University. 
 Link: https://cloudmusic68.herokuapp.com/solmusic.vn/home/v1.php
 
-<h2>1/ Product description</h2><br />
+<h2>1/ Product description</h2>
 
 The goal of our project is to create a website that delivers lawfully copyrighted music to businesses and organizations that use music in their operations. “CloudMusic” will be the name of our website. “CloudMusic” offers a secure, transparent, and copyright-compliant music service, as well as publicity and delivery alternatives for musicians. In addition, our website sells copyrighted music and provides a list of tracks under contract to third-party clients such as service companies, restaurants, hotels, cafés, and individual customers. <br /><br />
 
 
-<h2>2/ Notable Product Properties</h2><br />
+<h2>2/ Notable Product Properties</h2>
 Functionality: <br />
 - User Login/Sign Up: customers can use our website freely, but they can sign up for more functions such as searching and using music playlists.<br />
 - Playlist search: customers can search for their suitable playlist, by genre, artists, or albums. <br />
